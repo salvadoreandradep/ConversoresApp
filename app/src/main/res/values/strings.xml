@@ -44,5 +44,16 @@
 
     </string-array>
 
+    <string-array name="datos">
+        <item>Bits</item>
+        <item>Bytes</item>
+        <item>Kilobytes</item>
+        <item>Megabytes</item>
+        <item>Gigabytes</item>
+        <item>Terabytes</item>
+
+
+    </string-array>
+
 
 </resources>

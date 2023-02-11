@@ -14,11 +14,25 @@ public class MainActivity extends AppCompatActivity {
 
     Button longitud;
 
+    Button datostbtn;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        datostbtn=(Button)findViewById(R.id.btnDatos) ;
+
+        datostbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent d = new Intent(MainActivity.this, Datos.class);
+                startActivity(d);
+            }
+        });
 
 
 
