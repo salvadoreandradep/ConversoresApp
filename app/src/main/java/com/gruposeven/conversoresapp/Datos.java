@@ -66,7 +66,7 @@ public class Datos extends AppCompatActivity {
 
 class convertdata{
     double[][] data = {
-            { 1 },//datos
+            { 1, 0.001, 0.000125, 0.000976563, 1.000000512, 1.25000064, 9.536748046875, 1.000000512, 1.25000064, 9.313230514526, 1.00000051199996071, 1.250000639999950887, 9.094951674341797576},//datos
 
     };
     public double convertir(int opcion, int de, int a, double cantidad){
