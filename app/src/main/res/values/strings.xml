@@ -29,4 +29,20 @@
     </string-array>
 
 
+    <string-array name="longitud">
+        <item>Metros</item>
+        <item>Milimetros</item>
+        <item>centimetros</item>
+        <item>Kilometros</item>
+        <item>Pulgadas</item>
+        <item>Pies</item>
+        <item>Yardas</item>
+        <item>Millas</item>
+        <item>Millas Nauticas</item>
+        <item>Miles</item>
+
+
+    </string-array>
+
+
 </resources>
