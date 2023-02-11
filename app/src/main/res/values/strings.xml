@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">ConversoresApp</string>
+
+    <string-array name="monedas">
+        <item>Dolar</item>
+        <item>Quetzal</item>
+        <item>Lempira</item>
+        <item>Cordoba</item>
+        <item>Peso CR</item>
+        <item>Colon SV</item>
+        <item>Euro</item>
+        <item>Yenes</item>
+        <item>Rupias</item>
+        <item>Libras</item>
+    </string-array>
+
+    <string-array name="volumenes">
+        <item>Litros</item>
+        <item>Taza Imperial</item>
+        <item>Onza liquida Imperial</item>
+        <item>Galones(EE.UU)</item>
+        <item>Mililitros</item>
+        <item>Cucharada Imperial</item>
+        <item>Cucharada (EE.UU)</item>
+        <item>Metros Cubicos</item>
+        <item>Pulgadas Cubicas</item>
+        <item>Pies Cubicos</item>
+
+    </string-array>
+
+
+</resources>
