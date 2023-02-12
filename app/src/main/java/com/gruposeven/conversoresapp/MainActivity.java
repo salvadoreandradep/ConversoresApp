@@ -12,10 +12,40 @@ public class MainActivity extends AppCompatActivity {
     Button monedas;
     Button volumen;
 
+    Button longitud;
+
+    Button datostbtn;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        datostbtn=(Button)findViewById(R.id.btnDatos) ;
+
+        datostbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent d = new Intent(MainActivity.this, Datos.class);
+                startActivity(d);
+            }
+        });
+
+
+
+        longitud=(Button)findViewById(R.id.btnlongitud);
+
+        longitud.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent l = new Intent (MainActivity.this, Longitud.class);
+                startActivity(l);
+
+            }
+        });
 
 
 
@@ -25,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
         monedas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent (MainActivity.this, Monedas.class);
-                startActivity(i);
+                Intent m = new Intent (MainActivity.this, Monedas.class);
+                startActivity(m);
 
             }
         });
@@ -36,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
         volumen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent (MainActivity.this, Volumen.class);
-                startActivity(i);
+                Intent v = new Intent (MainActivity.this, Volumen.class);
+                startActivity(v);
 
             }
         });
