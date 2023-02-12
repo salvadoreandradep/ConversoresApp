@@ -34,10 +34,10 @@ public class Datos extends AppCompatActivity {
                 datatext = (TextView) findViewById(R.id.txtdatacon);
                 double cantidad = Double.parseDouble(datatext.getText().toString());
 
-                spdata = findViewById(R.id.spn1);
+                spdata = findViewById(R.id.spinnerD3);
                 int de = spdata.getSelectedItemPosition();
 
-                spdata = findViewById(R.id.spn2);
+                spdata = findViewById(R.id.spinnerD4);
                 int a = spdata.getSelectedItemPosition();
 
                 datatext = findViewById(R.id.txtdatares);
