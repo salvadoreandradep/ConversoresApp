@@ -69,7 +69,7 @@ public class Volumen extends AppCompatActivity {
 
 class conversor{
     double[][] volum = {
-            {1, 3.51951, 35.195096903053, 0.26417218127411029593, 1000, 56.3121, 67.628, 0.001, 61.0237, 1728 },//volumenes
+            {1, 3.51951, 35.1951, 0.264172, 1000, 56.3121, 67.628, 0.001, 61.0237, 0.0353147 },//volumenes
 
     };
     public double convertir(int opcion, int de, int a, double cantidad){

@@ -9,6 +9,8 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
     Button monedas;
     Button volumen;
 
@@ -16,12 +18,25 @@ public class MainActivity extends AppCompatActivity {
 
     Button datostbtn;
 
+    Button bttime;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+        bttime=(Button)findViewById(R.id.btnTiempo);
+        bttime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent t = new Intent(MainActivity.this, Tiempo.class);
+                startActivity(t);
+            }
+        });
 
 
         datostbtn=(Button)findViewById(R.id.btnDatos) ;
@@ -55,11 +70,16 @@ public class MainActivity extends AppCompatActivity {
         monedas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent m = new Intent (MainActivity.this, Monedas.class);
                 startActivity(m);
 
+
+
             }
         });
+
+
 
         volumen = (Button)findViewById(R.id.btnvolumen);
 

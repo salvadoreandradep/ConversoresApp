@@ -30,9 +30,9 @@
 
 
     <string-array name="longitud">
-        <item>Metros</item>
         <item>Milimetros</item>
         <item>centimetros</item>
+        <item>Metros</item>
         <item>Kilometros</item>
         <item>Pulgadas</item>
         <item>Pies</item>
@@ -56,6 +56,19 @@
         <item>Gigabyte por segundo</item>
         <item>Gibibit por segundo</item>
 
+
+    </string-array>
+
+
+    <string-array name="Time">
+        <item>Milisegundos</item>
+        <item>Segundos</item>
+        <item>Minutos</item>
+        <item>Horas</item>
+        <item>Dias</item>
+        <item>Semanas</item>
+        <item>Meses</item>
+        <item>Años</item>
 
 
     </string-array>

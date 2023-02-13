@@ -67,7 +67,7 @@ public class Longitud extends AppCompatActivity {
 
 class ConverturL{
     double[][] Longitud = {
-            {1,1000,100,0.001,39.3700787402,3.280839895, 1.0936132983,0.006213712,0.0005399568,39370.078740157 },//longitud
+            { 1, 0.1, 0.0001, 0.000001, 0.39370, 0.003280, 0.001093, 6.21371192e-7, 5.39956803e-7, 39.37007},//longitud
 
     };
     public double convertir(int opcion, int de, int a, double cantidad){
