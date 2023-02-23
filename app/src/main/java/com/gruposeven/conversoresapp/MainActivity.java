@@ -85,3 +85,8 @@ class conversor{
 
 
 }
+
+//Salvador Ernesto Andrade Peña
+//Maydelin Alicia Guevara Perdomo
+//Maria Estefany Salgado Osorio
+//Emilio José Urias Reyes
