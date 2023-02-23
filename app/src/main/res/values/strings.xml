@@ -29,17 +29,16 @@
     </string-array>
 
 
-    <string-array name="longitud">
-        <item>Milimetros</item>
-        <item>centimetros</item>
-        <item>Metros</item>
-        <item>Kilometros</item>
-        <item>Pulgadas</item>
-        <item>Pies</item>
-        <item>Yardas</item>
-        <item>Millas</item>
-        <item>Millas Nauticas</item>
-        <item>Miles</item>
+    <string-array name="Parcial">
+        <item>Pie Cuadrado</item>
+        <item>Vara Cuadrado</item>
+        <item>Yarda Cuadrado</item>
+        <item>Metro Cuadrado</item>
+        <item>Tareas</item>
+        <item>Manzanas</item>
+        <item>Hectareás</item>
+
+
 
 
     </string-array>
