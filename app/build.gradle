@@ -7,11 +7,11 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.gruposeven.conversoresapp"
-        minSdk 22
+        applicationId 'com.gruposeven.myapp'
+        minSdk 33
         targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName '1.1'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
