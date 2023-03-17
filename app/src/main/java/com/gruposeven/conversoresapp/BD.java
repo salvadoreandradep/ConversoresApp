@@ -18,8 +18,6 @@ public class BD extends SQLiteOpenHelper{
     }
 
 
-
-
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(sqlDB);
@@ -31,16 +29,14 @@ public class BD extends SQLiteOpenHelper{
 
     }
 
-    public String administrar_catalogo(String id, String nom, String dir, String cod, String accion){
-
-
+    public String administrar_catalogo(String id, String pro, String mar, String pres, String prec, String accion){
         try {
             SQLiteDatabase db = getWritableDatabase();
                 if(accion.equals("nuevo")){
-                    db.execSQL("INSERT INTO catalogo(nombre, descripcion, codigo)VALUES('"+nom+"', '"+dir+"', '"+cod+"')");
+                    db.execSQL("INSERT INTO catalogo(nombre, descripcion, codigo)VALUES('"+pro+"', '"+mar+"', '"+pres+"', '"+prec+"')");
 
             } else if (accion.equals("modificar")){
-                    db.execSQL("UPDATE catalogo SET nombre= '"+nom+"', descripcion = '"+dir+"', codigo = '"+cod+"'");
+                    db.execSQL("UPDATE catalogo SET producto= '"+pro+"', marca = '"+mar+"', precentacion = '"+pres+"', precio = '"+prec+"' ");
                 } else if (accion.equals("eliminar")) {
                     db.execSQL("DELETE FROM catalogo WHERE idcatalogo= '"+id+"'");
                 }
