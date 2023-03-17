@@ -12,9 +12,6 @@
         android:theme="@style/Theme.ConversoresApp"
         tools:targetApi="31" >
         <activity
-            android:name=".Catalogo"
-            android:exported="false" />
-        <activity
             android:name=".Tiempo"
             android:exported="false" />
         <activity
