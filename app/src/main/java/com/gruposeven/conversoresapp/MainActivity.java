@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -50,8 +51,31 @@ public class MainActivity extends AppCompatActivity {
         public boolean onCreateOptionMenu(Menu menu ){
 
             MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.menu_principal, menu);
+            return true;
 
 
 
+        }
+
+
+        public boolean onOptionsItemSelected(MenuItem item){
+
+        switch (item.getItemId()){
+            case R.id.menunuevo:
+                nuedoRegistro();
+
+                return true;
+
+            default:
+                return  super.onOptionsItemSelected(item);
+
+        }
+        }
+
+        private void nuedoRegistro(){
+
+        Intent intent = new Intent(this, NewActivity.class);
+        startActivity(intent);
         }
     }
