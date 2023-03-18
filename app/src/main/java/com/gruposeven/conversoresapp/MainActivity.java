@@ -18,7 +18,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
-        Button btn;
+        Button btn1;
+
+        Button btn2;
+
 
 
     @Override
@@ -26,23 +29,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn = findViewById(R.id.btncrear);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                DbHelper dbHelper = new DbHelper(MainActivity.this);
-                SQLiteDatabase db = dbHelper.getReadableDatabase();
-                if(db !=null){
-                    Toast.makeText(MainActivity.this, "BASE CREADA", Toast.LENGTH_LONG).show();
 
-                }else {
 
-                    Toast.makeText(MainActivity.this, "BASE NO CREADA", Toast.LENGTH_LONG).show();
-                }
 
-            }
-        });
+
+
+
+
+
+
+
+        DbHelper dbHelper = new DbHelper(MainActivity.this);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        if(db !=null){
+            Toast.makeText(MainActivity.this, "Base de Datos cargada", Toast.LENGTH_LONG).show();
+
+        }else {
+
+            Toast.makeText(MainActivity.this, "La Base de Datos no se puedo cargar", Toast.LENGTH_LONG).show();
+        }
+
 
 
 
@@ -68,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             default:
-                return  super.onOptionsItemSelected(item);
+                return super.onOptionsItemSelected(item);
 
         }
         }
