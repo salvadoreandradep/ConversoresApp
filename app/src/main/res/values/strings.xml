@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Catalogo</string>
 
+    <string name="nuevomenu">Nuevo Registro</string>
+
 
 </resources>
