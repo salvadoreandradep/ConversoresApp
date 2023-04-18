@@ -1,6 +1,5 @@
 package com.gruposeven.conversoresapp;
 
-import androidx.annotation.StringDef;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -34,10 +33,13 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    Bundle parametros = new Bundle();
+
     ProgressDialog progreso;
     JSONArray datosJSON;
     JSONObject jsonObject;
-    Bundle parametros = new Bundle();
+
     int posicion=0;
 
 
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void  nuevo_catalogo(){
         Intent agregar_catalogo = new Intent(MainActivity.this, agregar_catalogo.class);
-
+        agregar_catalogo.putExtras(parametros);
         startActivity(agregar_catalogo);
     }
 
@@ -144,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
             StringBuilder result = new StringBuilder();
 
             try {
-                URL url = new URL("http://10.0.2.2:5984/db_catalogo/_design/catalogo/_view/mi_catalogo");
+                URL url = new URL("http://192.168.100.10:5984/db_catalogo/_design/catalogo/_view/mi_catalogo");
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
 
@@ -211,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
                 BufferedReader reader = null;
 
                 try{
-                    String uri = "http://10.0.2.2:5984/db_catalogo/"+
+                    String uri = "http://192.168.100.10:5984/db_catalogo/"+
                       datosJSON.getJSONObject(posicion).getJSONObject("value").getString("_id")+ "?rev="+ datosJSON.getJSONObject(posicion).getJSONObject("value").getString("_rev");
                     URL url = new URL(uri);
 
