@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                 InputStream in = new BufferedInputStream(urlConnection.getErrorStream());
                 BufferedReader reader = new BufferedReader(new InputStreamReader(in));
                 String line;
-                while ((line = reader.readLine()) != null) ;
+                while ((line = reader.readLine()) != null)
                 {
                     result.append(line);
                 }

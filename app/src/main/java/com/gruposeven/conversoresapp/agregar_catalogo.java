@@ -8,6 +8,7 @@ import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -71,45 +72,53 @@ public class agregar_catalogo extends AppCompatActivity {
 
             }
         Button btn = (Button) findViewById(R.id.btnguardar);
-            btn.setOnClickListener(view -> {
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    TextView temp = (TextView) findViewById(R.id.txtcodigo);
+                    String codigo = temp.getText().toString();
 
-                TextView temp = (TextView) findViewById(R.id.txtcodigo);
-                String codigo = temp.getText().toString();
+                    temp = (TextView) findViewById(R.id.txtnombre);
+                    String nombre = temp.getText().toString();
 
-                temp = (TextView) findViewById(R.id.txtnombre);
-                String nombre = temp.getText().toString();
+                    temp = (TextView) findViewById(R.id.txtdireccion);
+                    String direccion = temp.getText().toString();
 
-                temp = (TextView) findViewById(R.id.txtdireccion);
-                String direccion = temp.getText().toString();
+                    temp = (TextView) findViewById(R.id.txttelefono);
+                    String telefono = temp.getText().toString();
 
-                temp = (TextView) findViewById(R.id.txttelefono);
-                String telefono = temp.getText().toString();
-
-                temp = (TextView) findViewById(R.id.txtdui);
-                String dui = temp.getText().toString();
+                    temp = (TextView) findViewById(R.id.txtdui);
+                    String dui = temp.getText().toString();
 
 
 
-                JSONObject miData = new JSONObject();
-                try {
-                    if (accion.equals("modificar")){
-                        miData.put("_id", id);
-                        miData.put("_rev", rev);
-                    }
-                    miData.put("codigo", codigo);
-                    miData.put("nombre", nombre);
-                    miData.put("direccion", direccion);
-                    miData.put("telefono", telefono);
-                    miData.put("dui", dui);
+                    JSONObject miData = new JSONObject();
+                    try {
+                        if (accion.equals("modificar")){
+                            miData.put("_id", id);
+                            miData.put("_rev", rev);
+                        }
+                        miData.put("codigo", codigo);
+                        miData.put("nombre", nombre);
+                        miData.put("direccion", direccion);
+                        miData.put("telefono", telefono);
+                        miData.put("dui", dui);
 
                         enviardatos objenviar = new enviardatos();
                         objenviar.execute(miData.toString());
 
 
 
-                }catch (Exception ex) {
-                    Toast.makeText(this, "Error al guardar", Toast.LENGTH_SHORT).show();
+                    }catch (Exception ex) {
+                        Toast.makeText(agregar_catalogo.this, "Error", Toast.LENGTH_SHORT).show();
+
+                    }
+
                 }
+            });
+            btn.setOnClickListener(view -> {
+
+
 
 
 
