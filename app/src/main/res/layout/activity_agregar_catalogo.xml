@@ -83,4 +83,15 @@
         android:text="Guardar"
         tools:layout_editor_absoluteX="286dp"
         tools:layout_editor_absoluteY="634dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnRegresar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="28dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_revert" />
 </androidx.constraintlayout.widget.ConstraintLayout>

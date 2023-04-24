@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
             StringBuilder result = new StringBuilder();
 
             try {
-                URL url = new URL("http://192.168.100.10:5984/db_catalogo/_design/catalogo/_view/mi_catalogo");
+                URL url = new URL("http://192.168.100.3:5984/db_catalogo/_design/catalogo/_view/mi_catalogo");
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
 
@@ -213,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
                 BufferedReader reader = null;
 
                 try{
-                    String uri = "http://192.168.100.10:5984/db_catalogo/"+
+                    String uri = "http://192.168.100.3:5984/db_catalogo/"+
                       datosJSON.getJSONObject(posicion).getJSONObject("value").getString("_id")+ "?rev="+ datosJSON.getJSONObject(posicion).getJSONObject("value").getString("_rev");
                     URL url = new URL(uri);
 

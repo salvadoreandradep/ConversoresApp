@@ -3,6 +3,7 @@ package com.gruposeven.conversoresapp;
 import androidx.annotation.RequiresPermission;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONObject;
 
@@ -99,18 +102,27 @@ public class agregar_catalogo extends AppCompatActivity {
                     miData.put("telefono", telefono);
                     miData.put("dui", dui);
 
-
+                        enviardatos objenviar = new enviardatos();
+                        objenviar.execute(miData.toString());
 
 
 
                 }catch (Exception ex) {
-
+                    Toast.makeText(this, "Error al guardar", Toast.LENGTH_SHORT).show();
                 }
+
 
 
 
             });
 
+            FloatingActionButton btnregresar = (FloatingActionButton) findViewById(R.id.btnRegresar);
+            btnregresar.setOnClickListener(view1 -> {
+                                    Intent r = new Intent(agregar_catalogo.this, MainActivity.class);
+                                    startActivity(r);
+
+
+            });
 
         }
 
@@ -128,7 +140,7 @@ public class agregar_catalogo extends AppCompatActivity {
             BufferedReader reader = null;
 
             try {
-                URL url = new URL("http://192.168.100.10:5984/db_catalogo/_design/catalogo/_view/mi_catalogo");
+                URL url = new URL("http://192.168.100.3:5984/db_catalogo/%22");
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setDoOutput(true);
                 urlConnection.setDoInput(true);
@@ -175,9 +187,28 @@ public class agregar_catalogo extends AppCompatActivity {
             }
             return null;
         }
-        
-        
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            try {
+                JSONObject jsonObject = new JSONObject(s);
+                if (jsonObject.getBoolean("ok")){
+
+                    Toast.makeText(agregar_catalogo.this, "Registro enviado", Toast.LENGTH_SHORT).show();
+                    Intent regresar = new Intent(agregar_catalogo.this, MainActivity.class);
+                    startActivity(regresar);
+
+
+                }else {
+                    Toast.makeText(agregar_catalogo.this, "Error al intentar almacenar el registro...", Toast.LENGTH_SHORT).show();
+                }
+
+            }catch (Exception e) {
+                Toast.makeText(agregar_catalogo.this, "Error al enviar a la red" + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+
+            }
+        }
     }
-
-
 }
