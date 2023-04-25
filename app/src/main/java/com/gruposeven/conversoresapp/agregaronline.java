@@ -1,10 +1,8 @@
 package com.gruposeven.conversoresapp;
 
-import androidx.annotation.RequiresPermission;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,25 +24,67 @@ import java.io.Writer;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class agregar_catalogo extends AppCompatActivity {
+public class agregaronline extends AppCompatActivity {
+
+    Button btn;
     String accion = "nuevo";
     String id = "";
     String rev = "";
     JSONObject datosJSON;
     String resp;
 
-    TextView temp;
-    Button btn;
-   
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agregar_catalogo);
-       
+        setContentView(R.layout.activity_agregaronline);
+
+        btn = findViewById(R.id.btnguardar2);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView temp = (TextView) findViewById(R.id.txtcodigo2);
+                String codigo2 = temp.getText().toString();
+
+                temp = (TextView) findViewById(R.id.txtnombre2);
+                String nombre2 = temp.getText().toString();
+
+                temp = (TextView) findViewById(R.id.txtdireccion2);
+                String direccion2 = temp.getText().toString();
+
+                temp = (TextView) findViewById(R.id.txttelefono2);
+                String telefono2 = temp.getText().toString();
+
+                temp = (TextView) findViewById(R.id.txtdui2);
+                String dui2 = temp.getText().toString();
+
+
+
+                JSONObject miData = new JSONObject();
+                try {
+                    if (accion.equals("modificar")){
+                        miData.put("_id", id);
+                        miData.put("_rev", rev);
+                    }
+                    miData.put("codigo", codigo2);
+                    miData.put("nombre", nombre2);
+                    miData.put("direccion", direccion2);
+                    miData.put("telefono", telefono2);
+                    miData.put("dui", dui2);
+
+                    agregaronline.enviardatos objenviar = new enviardatos();
+                    objenviar.execute(miData.toString());
+
+
+
+                }catch (Exception ex) {
+                    Toast.makeText(agregaronline.this, "Error", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
         Bundle parametros = getIntent().getExtras();
         accion = parametros.getString("accion");
-       
+
         if (accion.equals("modificar")){
             try {
                 datosJSON = new JSONObject(parametros.getString("valores"));
@@ -61,12 +101,12 @@ public class agregar_catalogo extends AppCompatActivity {
                 temp = (TextView) findViewById(R.id.txttelefono);
                 temp.setText(datosJSON.getString("presentacion"));
 
-                 temp = (TextView) findViewById(R.id.txtdui);
+                temp = (TextView) findViewById(R.id.txtdui);
                 temp.setText(datosJSON.getString("precio"));
 
                 id = datosJSON.getString("_id");
                 rev = datosJSON.getString("_rev");
-                
+
             }catch (Exception e) {
                 Toast.makeText(this, "Error al recuperar datos: " + e.getMessage(), Toast.LENGTH_SHORT).show();
 
@@ -76,64 +116,12 @@ public class agregar_catalogo extends AppCompatActivity {
 
 
 
-        Button btn = (Button) findViewById(R.id.btnguardar);
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    TextView temp = (TextView) findViewById(R.id.txtcodigo);
-                    String codigo = temp.getText().toString();
 
-                    temp = (TextView) findViewById(R.id.txtnombre);
-                    String nombre = temp.getText().toString();
-
-                    temp = (TextView) findViewById(R.id.txtdireccion);
-                    String direccion = temp.getText().toString();
-
-                    temp = (TextView) findViewById(R.id.txttelefono);
-                    String telefono = temp.getText().toString();
-
-                    temp = (TextView) findViewById(R.id.txtdui);
-                    String dui = temp.getText().toString();
-
-
-
-                    JSONObject miData = new JSONObject();
-                    try {
-                        if (accion.equals("modificar")){
-                            miData.put("_id", id);
-                            miData.put("_rev", rev);
-                        }
-                        miData.put("codigo", codigo);
-                        miData.put("nombre", nombre);
-                        miData.put("direccion", direccion);
-                        miData.put("telefono", telefono);
-                        miData.put("dui", dui);
-
-                        enviardatos objenviar = new enviardatos();
-                        objenviar.execute(miData.toString());
-
-
-
-                    }catch (Exception ex) {
-                        Toast.makeText(agregar_catalogo.this, "Error", Toast.LENGTH_SHORT).show();
-
-                    }
-
-                }
-            });
-            btn.setOnClickListener(view -> {
-
-
-
-
-
-
-            });
 
             FloatingActionButton btnregresar = (FloatingActionButton) findViewById(R.id.btnRegresar);
             btnregresar.setOnClickListener(view1 -> {
-                                    Intent r = new Intent(agregar_catalogo.this, MainActivity.class);
-                                    startActivity(r);
+                Intent r = new Intent(agregaronline.this, MainActivity.class);
+                startActivity(r);
 
 
             });
@@ -141,9 +129,9 @@ public class agregar_catalogo extends AppCompatActivity {
         }
 
 
+    }
 
-        }
-    private class enviardatos extends AsyncTask<String, String, String>{
+    private class enviardatos extends AsyncTask<String, String, String> {
         HttpURLConnection urlConnection;
         @Override
         protected String doInBackground(String... params) {
@@ -183,12 +171,12 @@ public class agregar_catalogo extends AppCompatActivity {
                 while ((inputLine = reader.readLine()) != null );
                 buffer.append(inputLine + "\n");
 
-                    if (buffer.length() == 0){
+                if (buffer.length() == 0){
 
-                        return  null;
-                    }
+                    return  null;
+                }
 
-                    JsonResponse = buffer.toString();
+                JsonResponse = buffer.toString();
 
                 Log.i(id, JsonResponse);
 
@@ -210,17 +198,17 @@ public class agregar_catalogo extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(s);
                 if (jsonObject.getBoolean("ok")){
 
-                    Toast.makeText(agregar_catalogo.this, "Registro enviado", Toast.LENGTH_SHORT).show();
-                    Intent regresar = new Intent(agregar_catalogo.this, MainActivity.class);
+                    Toast.makeText(agregaronline.this, "Registro enviado", Toast.LENGTH_SHORT).show();
+                    Intent regresar = new Intent(agregaronline.this, MainActivity.class);
                     startActivity(regresar);
 
 
                 }else {
-                    Toast.makeText(agregar_catalogo.this, "Error al intentar almacenar el registro...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(agregaronline.this, "Error al intentar almacenar el registro...", Toast.LENGTH_SHORT).show();
                 }
 
             }catch (Exception e) {
-                Toast.makeText(agregar_catalogo.this, "Error al enviar a la red" + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(agregaronline.this, "Error al enviar a la red" + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
 
             }
         }

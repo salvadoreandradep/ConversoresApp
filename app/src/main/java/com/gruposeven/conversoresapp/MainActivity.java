@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void  nuevo_catalogo(){
-        Intent agregar_catalogo = new Intent(MainActivity.this, agregar_catalogo.class);
+        Intent agregar_catalogo = new Intent(MainActivity.this, agregaronline.class);
         agregar_catalogo.putExtras(parametros);
         startActivity(agregar_catalogo);
     }
