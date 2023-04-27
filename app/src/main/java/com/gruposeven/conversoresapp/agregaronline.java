@@ -89,19 +89,19 @@ public class agregaronline extends AppCompatActivity {
             try {
                 datosJSON = new JSONObject(parametros.getString("valores"));
 
-                TextView temp = (TextView) findViewById(R.id.txtcodigo);
+                TextView temp = (TextView) findViewById(R.id.txtcodigo2);
                 temp.setText(datosJSON.getString("codigo"));
 
-                temp = (TextView) findViewById(R.id.txtnombre);
+                temp = (TextView) findViewById(R.id.txtnombre2);
                 temp.setText(datosJSON.getString("nombre"));
 
-                temp = (TextView) findViewById(R.id.txtdireccion);
+                temp = (TextView) findViewById(R.id.txtdireccion2);
                 temp.setText(datosJSON.getString("marca"));
 
-                temp = (TextView) findViewById(R.id.txttelefono);
+                temp = (TextView) findViewById(R.id.txttelefono2);
                 temp.setText(datosJSON.getString("presentacion"));
 
-                temp = (TextView) findViewById(R.id.txtdui);
+                temp = (TextView) findViewById(R.id.txtdui2);
                 temp.setText(datosJSON.getString("precio"));
 
                 id = datosJSON.getString("_id");
@@ -118,7 +118,7 @@ public class agregaronline extends AppCompatActivity {
 
 
 
-            FloatingActionButton btnregresar = (FloatingActionButton) findViewById(R.id.btnRegresar);
+            FloatingActionButton btnregresar = (FloatingActionButton) findViewById(R.id.btnRegresar2);
             btnregresar.setOnClickListener(view1 -> {
                 Intent r = new Intent(agregaronline.this, MainActivity.class);
                 startActivity(r);
@@ -187,7 +187,7 @@ public class agregaronline extends AppCompatActivity {
 
 
             }
-            return null;
+            return "";
         }
 
         @Override
