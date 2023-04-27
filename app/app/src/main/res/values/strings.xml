@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Semana13_Propuesta_IKA</string>
+
+    <!--CADENAS DE TARGETAS (ACTIVITY_MAIN.XML)-->
+    <string name="buscar">Buscar</string>
+
+    <!--CADENAS DE TARGETAS (LISTVIEW_IMAGENES.XML)-->
+    <string name="titulo">Producto</string>
+    <string name="marca">Marca</string>
+    <string name="categoria">Categoria</string>
+    <string name="precio">0$</string>
+
+    <!--CADENAS DE TARGETAS (LACTIVITY_AGREGAR_PRODUCTOS.XML)-->
+    <string name="productName">Nombre del producto</string>
+    <string name="tPrecio">Precio</string>
+    <string name="guardarProduct">GUARDAR PRODUCTO</string>
+
+</resources>

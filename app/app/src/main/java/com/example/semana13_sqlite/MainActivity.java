@@ -1,4 +1,4 @@
-package com.gruposeven.conversoresapp;
+package com.example.semana13_sqlite;
 
 import android.app.AlertDialog;
 import android.content.Intent;
