@@ -36,8 +36,10 @@
                         android:id="@+id/imgFotoAmigo"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@color/white"
                         android:rotation="-90"
-                        android:scaleType="centerCrop" />
+                        android:scaleType="centerCrop"
+                        android:tint="@color/ic_launcher_background" />
 
 
                 </androidx.cardview.widget.CardView>
