@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
@@ -38,8 +39,12 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     Bundle parametros = new Bundle();
+    String accion="nuevo";
+    String id="";
+    String rev="";
+    String idUnico;
 
-
+    TextView temp;
     JSONArray datosJSON;
     JSONObject jsonObject;
 
@@ -217,26 +222,31 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     private void mostrarDatosProductos(){
-        ltsProducto = findViewById(R.id.ltsamigos);
-        productArrayList.clear();
-        productArrayListCopy.clear();
-        do{
-            misProductos = new Productos(
-                    datosProductosCursor.getString(0),//idAmigo
-                    datosProductosCursor.getString(1),//nombre
-                    datosProductosCursor.getString(2),//telefono
-                    datosProductosCursor.getString(3),//direccion
-                    datosProductosCursor.getString(4),//email
-                    datosProductosCursor.getString(5) //urlPhoto
-            );
-            productArrayList.add(misProductos);
-        }while(datosProductosCursor.moveToNext());
-        adaptadorImagenes adaptadorImagenes = new adaptadorImagenes(getApplicationContext(), productArrayList);
-        ltsProducto.setAdapter(adaptadorImagenes);
 
-        registerForContextMenu(ltsProducto);
 
-        productArrayListCopy.addAll(productArrayList);
+                    ltsProducto = findViewById(R.id.ltsamigos);
+                    productArrayList.clear();
+                    productArrayListCopy.clear();
+                    do{
+                        misProductos = new Productos(
+                                datosProductosCursor.getString(0),//idAmigo
+                                datosProductosCursor.getString(1),//nombre
+                                datosProductosCursor.getString(2),//telefono
+                                datosProductosCursor.getString(3),//direccion
+                                datosProductosCursor.getString(4),//email
+                                datosProductosCursor.getString(5) //urlPhoto
+                        );
+                        productArrayList.add(misProductos);
+                    }while(datosProductosCursor.moveToNext());
+                    adaptadorImagenes adaptadorImagenes = new adaptadorImagenes(getApplicationContext(), productArrayList);
+                    ltsProducto.setAdapter(adaptadorImagenes);
+
+                    registerForContextMenu(ltsProducto);
+
+                    productArrayListCopy.addAll(productArrayList);
+
+
+
     }
     private void mostrarMsgToask(String msg){
         Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
@@ -250,28 +260,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private class obtenerDatos extends AsyncTask<Void, Void, String> {
+    private class obtenerDatos extends AsyncTask<String, Void, String> {
         HttpURLConnection urlConnection;
 
         @Override
-        protected String doInBackground(Void... params) {
+        protected String doInBackground(String... voids) {
             StringBuilder result = new StringBuilder();
 
             try {
@@ -288,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             } catch (Exception ex) {
-                Log.e("Mi Error", "Error", ex);
+                Log.e("Mi Error", "Error",ex);
                 ex.printStackTrace();
 
             } finally {
@@ -315,7 +308,7 @@ public class MainActivity extends AppCompatActivity {
                 lstCatalogo.setAdapter(aaAgenda);
 
                 for (int i=0; i<datosJSON.length(); i++){
-                    alAgenda.add(datosJSON.getJSONObject(i).getJSONObject("value").getString("nombre").toString());
+                    alAgenda.add(datosJSON.getJSONObject(i).getJSONObject("nombre").getString("value").toString());
 
                 }
                 aaAgenda.notifyDataSetChanged();;
@@ -323,7 +316,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             } catch (Exception ex) {
-                Toast.makeText(MainActivity.this, "Error" + ex.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Error " + ex.getMessage().toString(), Toast.LENGTH_SHORT).show();
             }
 
         }

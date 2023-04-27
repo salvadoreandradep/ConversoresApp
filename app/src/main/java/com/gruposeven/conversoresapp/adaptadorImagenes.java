@@ -45,13 +45,13 @@ public class adaptadorImagenes extends BaseAdapter {
         ImageView imgViewView = itemView.findViewById(R.id.imgPhoto);
         try{
             misRepuestos = datosRepuestosArrayList.get(position);
-            tempVal.setText("Nommbre: "+misRepuestos.getNombre());
+            tempVal.setText("Nombre: "+misRepuestos.getNombre());
 
             tempVal = itemView.findViewById(R.id.lblCategoria);
-            tempVal.setText("Categooria: "+misRepuestos.getCategoria());
+            tempVal.setText("Presentacion: "+misRepuestos.getCategoria());
 
             tempVal = itemView.findViewById(R.id.lblPrecio);
-            tempVal.setText("Precioo: "+misRepuestos.getPrecio());
+            tempVal.setText("Precio: "+misRepuestos.getPrecio());
 
             tempVal = itemView.findViewById(R.id.lblMarca);
             tempVal.setText("Marca: "+misRepuestos.getMarca());

@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId "com.gruposeven.conversoresapp"
         minSdk 29
-        targetSdk 29
+        targetSdk 30
         versionCode 1
         versionName "1.0"
 
