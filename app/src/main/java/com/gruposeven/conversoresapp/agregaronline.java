@@ -160,6 +160,7 @@ public class agregaronline extends AppCompatActivity {
 
                 if (inputStream == null){
 
+
                     return  null;
 
                 }
