@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "187915658814",
+    "project_id": "instashop-c2fc7",
+    "storage_bucket": "instashop-c2fc7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:187915658814:android:a3d3838b900eb0cf8f936f",
+        "android_client_info": {
+          "package_name": "com.gruposeven.conversoresapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "187915658814-btcss0vn8q0vfjh9mcdosftol0pd4jq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrssdFcwNnWyp7_WbcR0h804Essozpg7I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "187915658814-btcss0vn8q0vfjh9mcdosftol0pd4jq0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
