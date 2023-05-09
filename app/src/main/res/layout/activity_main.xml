@@ -4,7 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lobster_two_bold"
+        android:text="InstaShop"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.126" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="276dp"
+        android:layout_height="50dp"
+        android:background="#FFFFFF"
+        android:text="Iniciar Sesion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_pass"
+        app:layout_constraintVertical_bias="0.194" />
+
+    <EditText
+        android:id="@+id/et_pass"
+        android:layout_width="277dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="364dp"
+        android:backgroundTint="#BFBDBD"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPersonName|textPassword"
+        android:textColor="#9C27B0"
+        android:textColorHint="#BFBDBD"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/et_mail"
+        android:layout_width="277dp"
+        android:layout_height="46dp"
+        android:backgroundTint="#BFBDBD"
+        android:ems="10"
+        android:hint="Correo Electronico"
+        android:inputType="textPersonName"
+        android:textColor="#9C27B0"
+        android:textColorHint="#BFBDBD"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/et_pass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.663" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
