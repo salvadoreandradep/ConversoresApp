@@ -11,7 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ConversoresApp"
         tools:targetApi="31">
-
+        <activity
+            android:name=".recuperar"
+            android:exported="false" />
+        <activity
+            android:name=".crearuser"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
