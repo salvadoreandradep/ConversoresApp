@@ -95,7 +95,7 @@
         android:backgroundTint="#E91E63"
         android:ems="10"
         android:hint="Contraseña"
-        android:inputType="text"
+        android:inputType="text|textPassword"
         android:textColor="#E91E63"
         android:textColorHint="#B1AFAF"
         app:layout_constraintBottom_toTopOf="@+id/btn_register"
