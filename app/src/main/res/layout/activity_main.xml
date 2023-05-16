@@ -8,25 +8,11 @@
     tools:context=".MainActivity">
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/lobster_two_bold"
-        android:text="MarkingShop"
-        android:textColor="#000000"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.126" />
-
     <Button
         android:id="@+id/btninicio"
-        android:layout_width="276dp"
-        android:layout_height="50dp"
-        android:background="#FFFFFF"
+        android:layout_width="275dp"
+        android:layout_height="60dp"
+        android:backgroundTint="#E91E63"
         android:text="Iniciar Sesion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,11 +26,11 @@
         android:layout_width="277dp"
         android:layout_height="46dp"
         android:layout_marginBottom="364dp"
-        android:backgroundTint="#BFBDBD"
+        android:backgroundTint="#F36193"
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="textPersonName|textPassword"
-        android:textColor="#9C27B0"
+        android:textColor="#E91E63"
         android:textColorHint="#BFBDBD"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -55,11 +41,11 @@
         android:id="@+id/et_mail"
         android:layout_width="277dp"
         android:layout_height="46dp"
-        android:backgroundTint="#BFBDBD"
+        android:backgroundTint="#F36193"
         android:ems="10"
         android:hint="Correo Electrónico"
         android:inputType="textPersonName"
-        android:textColor="#9C27B0"
+        android:textColor="#E91E63"
         android:textColorHint="#BFBDBD"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/et_pass"
@@ -77,10 +63,10 @@
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.268"
+        app:layout_constraintHorizontal_bias="0.236"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btninicio"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintVertical_bias="0.042" />
 
     <TextView
         android:id="@+id/btnrecuperar"
@@ -89,20 +75,21 @@
         android:layout_marginTop="12dp"
         android:layout_marginBottom="256dp"
         android:text="Recuperar Aqui"
-        android:textColor="#673AB7"
+        android:textColor="#E91E63"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.782"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btninicio" />
+        app:layout_constraintHorizontal_bias="0.163"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/btninicio"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="420dp"
         android:layout_height="54dp"
         android:layout_marginTop="7dp"
-        android:background="#EAE8E8"
+        android:background="#F16997"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
@@ -128,7 +115,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Crea aquí"
-        android:textColor="#673AB7"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -136,5 +123,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.977" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="98dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.702"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:fontFamily="@font/lobster_two_bold"
+        android:text="Shop"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.604"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.211" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lobster_two_bold"
+        android:text="Chat"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.338"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.115" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
