@@ -60,6 +60,7 @@ public class crearuser extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
+                                Toast.makeText(crearuser.this,"Cuenta creada", Toast.LENGTH_LONG).show();
                                 finish();
                             }else {
                                 String errorcode = ((FirebaseAuthException) task.getException()).getErrorCode();
