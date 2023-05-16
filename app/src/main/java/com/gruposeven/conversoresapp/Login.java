@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-public class MainActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     TextView btntext, btntex2;
     Button btn;
@@ -66,9 +66,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
-
-
-                        if (task.isSuccessful()){
+                       if (task.isSuccessful()){
                             irhome();
 
                         }else{
@@ -94,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         btntext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent register = new Intent(MainActivity.this, crearuser.class);
+                Intent register = new Intent(Login.this, crearuser.class);
                 startActivity(register);
 
             }
@@ -104,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         btntex2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent recuperar = new Intent(MainActivity.this, recuperar.class);
+                Intent recuperar = new Intent(Login.this, recuperar.class);
                 startActivity(recuperar);
 
             }
@@ -120,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void irhome() {
 
-        Intent ir = new Intent(MainActivity.this, Home.class);
+        Intent ir = new Intent(Login.this, Home.class);
         ir.putExtra("mail",email.getText().toString());
         ir.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(ir);
@@ -131,74 +129,74 @@ public class MainActivity extends AppCompatActivity {
         switch (error) {
 
             case "ERROR_INVALID_CUSTOM_TOKEN":
-                Toast.makeText(MainActivity.this, "El formato del token personalizado es incorrecto. Por favor revise la documentación", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "El formato del token personalizado es incorrecto. Por favor revise la documentación", Toast.LENGTH_LONG).show();
                 break;
 
             case "ERROR_CUSTOM_TOKEN_MISMATCH":
-                Toast.makeText(MainActivity.this, "El token personalizado corresponde a una audiencia diferente.", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "El token personalizado corresponde a una audiencia diferente.", Toast.LENGTH_LONG).show();
                 break;
 
             case "ERROR_INVALID_CREDENTIAL":
-                Toast.makeText(MainActivity.this, "La credencial de autenticación proporcionada tiene un formato incorrecto o ha caducado.", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "La credencial de autenticación proporcionada tiene un formato incorrecto o ha caducado.", Toast.LENGTH_LONG).show();
                 break;
 
             case "ERROR_INVALID_EMAIL":
-                Toast.makeText(MainActivity.this, "La dirección de correo electrónico está mal formateada.", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "La dirección de correo electrónico está mal formateada.", Toast.LENGTH_LONG).show();
                 email.setError("La dirección de correo electrónico está mal formateada.");
                 email.requestFocus();
                 break;
 
             case "ERROR_WRONG_PASSWORD":
-                Toast.makeText(MainActivity.this, "La contraseña no es válida o el usuario no tiene contraseña.", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "La contraseña no es válida o el usuario no tiene contraseña.", Toast.LENGTH_LONG).show();
                 pass.setError("la contraseña es incorrecta ");
                 pass.requestFocus();
                 pass.setText("");
                 break;
 
             case "ERROR_USER_MISMATCH":
-                Toast.makeText(MainActivity.this, "Las credenciales proporcionadas no corresponden al usuario que inició sesión anteriormente..", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "Las credenciales proporcionadas no corresponden al usuario que inició sesión anteriormente..", Toast.LENGTH_LONG).show();
                 break;
 
             case "ERROR_REQUIRES_RECENT_LOGIN":
-                Toast.makeText(MainActivity.this,"Esta operación es sensible y requiere autenticación reciente. Inicie sesión nuevamente antes de volver a intentar esta solicitud.", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this,"Esta operación es sensible y requiere autenticación reciente. Inicie sesión nuevamente antes de volver a intentar esta solicitud.", Toast.LENGTH_LONG).show();
                 break;
 
             case "ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL":
-                Toast.makeText(MainActivity.this, "Ya existe una cuenta con la misma dirección de correo electrónico pero diferentes credenciales de inicio de sesión. Inicie sesión con un proveedor asociado a esta dirección de correo electrónico.", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "Ya existe una cuenta con la misma dirección de correo electrónico pero diferentes credenciales de inicio de sesión. Inicie sesión con un proveedor asociado a esta dirección de correo electrónico.", Toast.LENGTH_LONG).show();
                 break;
 
             case "ERROR_EMAIL_ALREADY_IN_USE":
-                Toast.makeText(MainActivity.this, "La dirección de correo electrónico ya está siendo utilizada por otra cuenta..   ", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "La dirección de correo electrónico ya está siendo utilizada por otra cuenta..   ", Toast.LENGTH_LONG).show();
                 email.setError("La dirección de correo electrónico ya está siendo utilizada por otra cuenta.");
                 email.requestFocus();
                 break;
 
             case "ERROR_CREDENTIAL_ALREADY_IN_USE":
-                Toast.makeText(MainActivity.this, "Esta credencial ya está asociada con una cuenta de usuario diferente.", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "Esta credencial ya está asociada con una cuenta de usuario diferente.", Toast.LENGTH_LONG).show();
                 break;
 
             case "ERROR_USER_DISABLED":
-                Toast.makeText(MainActivity.this, "La cuenta de usuario ha sido inhabilitada por un administrador..", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "La cuenta de usuario ha sido inhabilitada por un administrador..", Toast.LENGTH_LONG).show();
                 break;
 
             case "ERROR_USER_TOKEN_EXPIRED":
-                Toast.makeText(MainActivity.this, "La credencial del usuario ya no es válida. El usuario debe iniciar sesión nuevamente.", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "La credencial del usuario ya no es válida. El usuario debe iniciar sesión nuevamente.", Toast.LENGTH_LONG).show();
                 break;
 
             case "ERROR_USER_NOT_FOUND":
-                Toast.makeText(MainActivity.this, "No hay ningún registro de usuario que corresponda a este identificador. Es posible que se haya eliminado al usuario.", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "No hay ningún registro de usuario que corresponda a este identificador. Es posible que se haya eliminado al usuario.", Toast.LENGTH_LONG).show();
                 break;
 
             case "ERROR_INVALID_USER_TOKEN":
-                Toast.makeText(MainActivity.this, "La credencial del usuario ya no es válida. El usuario debe iniciar sesión nuevamente.", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "La credencial del usuario ya no es válida. El usuario debe iniciar sesión nuevamente.", Toast.LENGTH_LONG).show();
                 break;
 
             case "ERROR_OPERATION_NOT_ALLOWED":
-                Toast.makeText(MainActivity.this, "Esta operación no está permitida. Debes habilitar este servicio en la consola.", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "Esta operación no está permitida. Debes habilitar este servicio en la consola.", Toast.LENGTH_LONG).show();
                 break;
 
             case "ERROR_WEAK_PASSWORD":
-                Toast.makeText(MainActivity.this, "La contraseña proporcionada no es válida..", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "La contraseña proporcionada no es válida..", Toast.LENGTH_LONG).show();
                 pass.setError("La contraseña no es válida, debe tener al menos 6 caracteres");
                 pass.requestFocus();
                 break;

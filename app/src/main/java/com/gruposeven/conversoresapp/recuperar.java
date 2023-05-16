@@ -20,7 +20,7 @@ public class recuperar extends AppCompatActivity {
         ya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent regresar = new Intent(recuperar.this, MainActivity.class);
+                Intent regresar = new Intent(recuperar.this, Login.class);
                 startActivity(regresar);
             }
         });

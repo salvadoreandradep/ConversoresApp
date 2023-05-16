@@ -80,7 +80,7 @@ public class crearuser extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent regresar = new Intent(crearuser.this, MainActivity.class);
+                Intent regresar = new Intent(crearuser.this, Login.class);
                 startActivity(regresar);
 
             }
