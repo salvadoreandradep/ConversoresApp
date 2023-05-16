@@ -8,41 +8,6 @@
     tools:context=".crearuser">
 
 
-    <EditText
-        android:id="@+id/et_mail"
-        android:layout_width="277dp"
-        android:layout_height="46dp"
-        android:backgroundTint="#BFBDBD"
-        android:ems="10"
-        android:hint="Correo Electrónico"
-        android:inputType="textPersonName"
-        android:textColor="#9C27B0"
-        android:textColorHint="#BFBDBD"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/et_pass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.928" />
-
-    <EditText
-        android:id="@+id/et_pass"
-        android:layout_width="277dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="324dp"
-        android:backgroundTint="#BFBDBD"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="textPersonName|textPassword"
-        android:textColor="#9C27B0"
-        android:textColorHint="#BFBDBD"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <Button
         android:id="@+id/btn_register"
         android:layout_width="272dp"
@@ -105,5 +70,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.195" />
+
+    <EditText
+        android:id="@+id/etmail"
+        android:layout_width="270dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#E91E63"
+        android:ems="10"
+        android:hint="Correo Electronico"
+        android:inputType="text|textEmailAddress"
+        android:textColor="#E91E63"
+        android:textColorHint="#B1AFAF"
+        app:layout_constraintBottom_toTopOf="@+id/btn_register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.412" />
+
+    <EditText
+        android:id="@+id/etpass"
+        android:layout_width="270dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#E91E63"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="text"
+        android:textColor="#E91E63"
+        android:textColorHint="#B1AFAF"
+        app:layout_constraintBottom_toTopOf="@+id/btn_register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.703" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

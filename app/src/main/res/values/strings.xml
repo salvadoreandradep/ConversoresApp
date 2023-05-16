@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">MyApp</string>
 
+    <string name="invalid_mail">Ingrese un correo electronico valido</string>
+    <string name="invalid_pass">Ingrese una contraseña mayor a 6 digitos</string>
+
 
 </resources>
