@@ -36,6 +36,8 @@ public class Home extends AppCompatActivity {
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent pro = new Intent(Home.this, products.class);
+                startActivity(pro);
 
             }
         });
