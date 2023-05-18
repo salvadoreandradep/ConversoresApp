@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 
 
@@ -37,12 +38,7 @@ public class Login extends AppCompatActivity {
 
 
         firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseAuth auth = FirebaseAuth.getInstance();
 
-        FirebaseUser user = auth.getCurrentUser();
-        if (user != null){
-            irhome();
-        }
 
 
 
@@ -71,6 +67,8 @@ public class Login extends AppCompatActivity {
 
                         }else{
 
+                           String errorcode = ((FirebaseAuthException)task.getException()).getErrorCode();
+                           dameToastdeerror(errorcode);
 
 
                         }
@@ -141,8 +139,8 @@ public class Login extends AppCompatActivity {
                 break;
 
             case "ERROR_INVALID_EMAIL":
-                Toast.makeText(Login.this, "La dirección de correo electrónico está mal formateada.", Toast.LENGTH_LONG).show();
-                email.setError("La dirección de correo electrónico está mal formateada.");
+                Toast.makeText(Login.this, "Algo salio mal.", Toast.LENGTH_LONG).show();
+                email.setError("Revisa tu correo.");
                 email.requestFocus();
                 break;
 
