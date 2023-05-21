@@ -5,30 +5,30 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-         />
-
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/nombreEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress" />
+        android:hint="Nombre" />
 
     <EditText
-        android:id="@+id/editTextPassword"
+        android:id="@+id/correoEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="Correo electrónico" />
+
+    <EditText
+        android:id="@+id/contraseñaEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña"
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/buttonSignUp"
-        android:layout_width="wrap_content"
+        android:id="@+id/registrarButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign Up" />
+        android:text="Registrar" />
 
     <TextView
         android:id="@+id/textViewLogin"
