@@ -17,10 +17,12 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button buttonLogout;
+
     FirebaseAuth firebaseAuth;
     TextView profile;
 
+
+   TextView buttonLogout;
 
 
 
@@ -35,6 +37,19 @@ public class HomeActivity extends AppCompatActivity {
         profile= findViewById(R.id.txtprofile);
         buttonLogout = findViewById(R.id.buttonLogout);
 
+        buttonLogout.setOnClickListener(new android.view.View.OnClickListener() {
+            @Override
+            public void onClick(android.view.View v) {
+
+                Intent Home = new Intent(HomeActivity.this, MainActivity.class);
+                startActivity(Home);
+                firebaseAuth.signOut();
+                finish();
+
+
+            }
+        });
+
 
 
         profile.setOnClickListener(new View.OnClickListener() {
@@ -44,17 +59,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(profile);
             }
         });
-        buttonLogout.setOnClickListener(new android.view.View.OnClickListener() {
-            @Override
-            public void onClick(android.view.View v) {
-                firebaseAuth.signOut();
-                Intent Home = new Intent(HomeActivity.this, MainActivity.class);
-                startActivity(Home);
-                finish();
 
-
-            }
-        });
 
 
     }

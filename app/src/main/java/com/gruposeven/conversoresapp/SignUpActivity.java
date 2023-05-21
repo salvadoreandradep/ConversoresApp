@@ -3,10 +3,12 @@ package com.gruposeven.conversoresapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,6 +21,8 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 public class SignUpActivity extends AppCompatActivity {
 
     EditText nombreEditText, correoEditText, contraseñaEditText;
+
+    TextView regresarlogin;
     Button registrarButton;
     ;
     FirebaseAuth firebaseAuth;
@@ -33,6 +37,15 @@ public class SignUpActivity extends AppCompatActivity {
         correoEditText = findViewById(R.id.correoEditText);
         contraseñaEditText = findViewById(R.id.contraseñaEditText);
         registrarButton = findViewById(R.id.registrarButton);
+        regresarlogin=findViewById(R.id.textViewLogin);
+
+        regresarlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Homer1 = new Intent(SignUpActivity.this, MainActivity.class);
+                startActivity(Homer1);
+            }
+        });
 
 
         registrarButton.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +69,8 @@ public class SignUpActivity extends AppCompatActivity {
                                         .build();
                                 user.updateProfile(profileUpdates);
                             }
+                            Intent Homer = new Intent(SignUpActivity.this, MainActivity.class);
+                            startActivity(Homer);
                             // Realiza acciones adicionales después del registro exitoso, si es necesario
                             Toast.makeText(SignUpActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
 

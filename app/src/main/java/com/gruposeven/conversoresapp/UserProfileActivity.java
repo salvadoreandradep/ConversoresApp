@@ -2,7 +2,9 @@ package com.gruposeven.conversoresapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -14,6 +16,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +25,10 @@ public class UserProfileActivity extends AppCompatActivity {
         nombreTextView = findViewById(R.id.nombreTextView);
         correoTextView = findViewById(R.id.correoTextView);
 
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+
 
         if (user != null) {
             // Obtén el nombre y correo electrónico del usuario
