@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- activity_login.xml -->
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
-
 
     <ImageView
         android:layout_width="150dp"
@@ -28,19 +25,16 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/buttonSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login" />
+        android:text="Sign Up" />
 
     <TextView
-        android:id="@+id/textViewSignUp"
+        android:id="@+id/textViewLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Don't have an account? Sign up" />
+        android:text="Already have an account? Login" />
 
 </LinearLayout>
-
-
-
