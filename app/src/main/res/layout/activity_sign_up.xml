@@ -1,49 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:background="#FFFFFF"
+
     tools:context=".SignUpActivity">
 
     <EditText
         android:id="@+id/edtNombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nombre" />
+        android:layout_width="255dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="224dp"
+        android:backgroundTint="#000000"
+        android:foregroundTint="#000000"
+        android:hint="Nombre de Usuario"
+        android:textColor="#000000"
+        android:textColorHint="#C6C2C2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edtApodo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edtNombre"
-        android:layout_marginTop="16dp"
-        android:hint="Apodo de usuario" />
-
-    <EditText
-        android:id="@+id/edtCorreo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edtApodo"
-        android:layout_marginTop="16dp"
-        android:inputType="textEmailAddress"
-        android:hint="Correo electrónico" />
+        android:layout_width="253dp"
+        android:layout_height="51dp"
+        android:backgroundTint="#000000"
+        android:foregroundTint="#000000"
+        android:freezesText="false"
+        android:hint="Apodo de usuario"
+        android:textColor="#000000"
+        android:textColorHint="#C3C0C0"
+        app:layout_constraintBottom_toTopOf="@+id/edtCorreo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNombre"
+        app:layout_constraintVertical_bias="0.534" />
 
     <EditText
         android:id="@+id/edtContraseña"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edtCorreo"
-        android:layout_marginTop="16dp"
+        android:layout_width="252dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="35dp"
+        android:backgroundTint="#000000"
+        android:foregroundTint="#000000"
+        android:hint="Contraseña"
         android:inputType="textPassword"
-        android:hint="Contraseña" />
+        android:textColor="#000000"
+        android:textColorHint="#BAB7B7"
+        android:textIsSelectable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtCorreo" />
 
     <Button
         android:id="@+id/btnRegistrar"
+        android:layout_width="251dp"
+        android:layout_height="53dp"
+        android:backgroundTint="#E91E63"
+        android:text="Registrar"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtContraseña"
+        app:layout_constraintVertical_bias="0.358" />
+
+    <EditText
+        android:id="@+id/edtCorreo"
+        android:layout_width="253dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="128dp"
+        android:backgroundTint="#000000"
+        android:foregroundTint="#000000"
+        android:hint="Correo electrónico"
+        android:inputType="textEmailAddress"
+        android:textColor="#000000"
+        android:textColorHint="#BDBABA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNombre" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="147dp"
+        android:layout_height="148dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo2" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="414dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="-10dp"
+        android:background="#E91E63"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/btnlogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edtContraseña"
-        android:layout_marginTop="24dp"
-        android:text="Registrar" />
+        android:layout_marginBottom="16dp"
+        android:text="Ya tienes cuenta? Inicia Sesion"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

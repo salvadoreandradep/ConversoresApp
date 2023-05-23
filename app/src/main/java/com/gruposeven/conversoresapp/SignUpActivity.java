@@ -22,14 +22,14 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private EditText edtNombre;
-    private EditText edtApodo;
-    private EditText edtCorreo;
-    private EditText edtContraseña;
-    private Button btnRegistrar;
-
-    private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
+    EditText edtNombre;
+    EditText edtApodo;
+    EditText edtCorreo;
+    EditText edtContraseña;
+    Button btnRegistrar;
+    TextView btnmenu;
+    FirebaseAuth mAuth;
+    DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,15 @@ public class SignUpActivity extends AppCompatActivity {
         edtCorreo = findViewById(R.id.edtCorreo);
         edtContraseña = findViewById(R.id.edtContraseña);
         btnRegistrar = findViewById(R.id.btnRegistrar);
+        btnmenu= findViewById(R.id.btnlogin);
+
+        btnmenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent login = new Intent(SignUpActivity.this, MainActivity.class);
+                startActivity(login);
+            }
+        });
 
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
