@@ -1,40 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:padding="16dp"
+    tools:context=".SignUpActivity">
 
     <EditText
-        android:id="@+id/nombreEditText"
+        android:id="@+id/edtNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nombre" />
 
     <EditText
-        android:id="@+id/correoEditText"
+        android:id="@+id/edtApodo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/edtNombre"
+        android:layout_marginTop="16dp"
+        android:hint="Apodo de usuario" />
+
+    <EditText
+        android:id="@+id/edtCorreo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtApodo"
+        android:layout_marginTop="16dp"
+        android:inputType="textEmailAddress"
         android:hint="Correo electrónico" />
 
     <EditText
-        android:id="@+id/contraseñaEditText"
+        android:id="@+id/edtContraseña"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contraseña"
-        android:inputType="textPassword" />
+        android:layout_below="@id/edtCorreo"
+        android:layout_marginTop="16dp"
+        android:inputType="textPassword"
+        android:hint="Contraseña" />
 
     <Button
-        android:id="@+id/registrarButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Registrar" />
-
-    <TextView
-        android:id="@+id/textViewLogin"
+        android:id="@+id/btnRegistrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Already have an account? Login" />
+        android:layout_below="@id/edtContraseña"
+        android:layout_marginTop="24dp"
+        android:text="Registrar" />
 
-</LinearLayout>
+</RelativeLayout>
