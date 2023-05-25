@@ -19,41 +19,6 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
-    public static String ObtekerToken(){
-
-        AtomicReference<String> token = null;
-        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
-            if (task.isSuccessful()){
-                return;
-
-
-            }
-          token.set(task.getResult());
-
-
-        });
-
-        return token.get();
-
-
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     private static final String CHANNEL_ID = "channel_id";

@@ -21,6 +21,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import java.util.concurrent.atomic.AtomicReference;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText editTextEmail, editTextPassword;
@@ -28,11 +30,23 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewSignUp, txtrecovery;
     FirebaseAuth firebaseAuth;
 
+    MyFirebaseMessagingService myFirebaseMessagingService;
+    String miToken= "";
+
+
+
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -53,12 +67,12 @@ public class MainActivity extends AppCompatActivity {
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(task -> {
                     if (!task.isSuccessful()) {
-                        Log.w(TAG, "Fetching FCM registration token failed", task.getException());
-                        return;
+                      return;
                     }
 
                     // Obtén el token de registro del dispositivo
-                    String token = task.getResult();
+                    String mitoken = task.getResult();
+                    Toast.makeText(getApplicationContext(),"mi token" +  mitoken, Toast.LENGTH_LONG).show();
 
                     // Puedes guardar el token en tu servidor para enviar notificaciones push más adelante
                 });
@@ -110,6 +124,26 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public void ObtekerToken(){
+
+        AtomicReference<String> token = null;
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+                return;
+
+
+            }
+
+
+            String miToken = task.getResult();
+            Toast.makeText(getApplicationContext(), "Token"+ miToken, Toast.LENGTH_LONG).show();
+
+        });
+
+
+    }
+
 
 
 
