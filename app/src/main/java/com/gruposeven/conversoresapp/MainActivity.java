@@ -1,10 +1,13 @@
 package com.gruposeven.conversoresapp;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,12 +19,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText editTextEmail, editTextPassword;
     Button buttonLogin;
-    TextView textViewSignUp;
+    TextView textViewSignUp, txtrecovery;
     FirebaseAuth firebaseAuth;
 
 
@@ -44,6 +48,28 @@ public class MainActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.editTextPassword);
         buttonLogin = findViewById(R.id.buttonLogin);
         textViewSignUp = findViewById(R.id.textViewSignUp);
+        txtrecovery=findViewById(R.id.txtrecovery);
+
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                        return;
+                    }
+
+                    // Obtén el token de registro del dispositivo
+                    String token = task.getResult();
+
+                    // Puedes guardar el token en tu servidor para enviar notificaciones push más adelante
+                });
+
+        txtrecovery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, recoverpassword.class));
+            }
+        });
+
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override

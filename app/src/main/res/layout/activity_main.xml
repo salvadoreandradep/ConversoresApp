@@ -30,15 +30,14 @@
         android:id="@+id/buttonLogin"
         android:layout_width="282dp"
         android:layout_height="48dp"
+        android:layout_marginTop="40dp"
         android:backgroundTint="#E91E63"
         android:text="Login"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/textViewSignUp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.519"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
-        app:layout_constraintVertical_bias="0.116" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -47,10 +46,11 @@
         android:backgroundTint="#000000"
         android:hint="Password"
         android:inputType="textPassword"
+        android:textColor="#000000"
         android:textColorHint="#B8B6B6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.55" />
@@ -69,7 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Don't have an account? Sign up"
+        android:text="¿No tienes una cuenta? Inscribirse"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,6 +85,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="192dp"
+        android:layout_height="18dp"
+        android:text="¿Olvidaste tu contraseña?"
+        android:textColor="#E91E63"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.348"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+
+    <TextView
+        android:id="@+id/txtrecovery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recuperar"
+        android:textColor="#E91E63"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
