@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="16dp"
     tools:context=".UserProfileActivity">
 
@@ -16,7 +17,6 @@
         android:id="@+id/txtApodo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtNombre"
         android:layout_marginTop="16dp"
         android:text="Apodo de usuario" />
 
@@ -24,8 +24,7 @@
         android:id="@+id/txtCorreo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtApodo"
         android:layout_marginTop="16dp"
         android:text="Correo electrónico" />
 
-</RelativeLayout>
+</LinearLayout>

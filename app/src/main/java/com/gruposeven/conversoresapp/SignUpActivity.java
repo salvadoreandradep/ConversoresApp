@@ -24,6 +24,7 @@ public class SignUpActivity extends AppCompatActivity {
     EditText edtApodo;
     EditText edtCorreo;
     EditText edtContraseña;
+    EditText edtBio;
     Button btnRegistrar;
     TextView btnmenu;
     FirebaseAuth mAuth;
@@ -41,6 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
         edtNombre = findViewById(R.id.edtNombre);
         edtApodo = findViewById(R.id.edtApodo);
         edtCorreo = findViewById(R.id.edtCorreo);
+        edtBio = findViewById(R.id.edtBio);
         edtContraseña = findViewById(R.id.edtContraseña);
         btnRegistrar = findViewById(R.id.btnRegistrar);
         btnmenu= findViewById(R.id.btnlogin);
@@ -59,16 +61,17 @@ public class SignUpActivity extends AppCompatActivity {
                 String nombre = edtNombre.getText().toString().trim();
                 String apodo = edtApodo.getText().toString().trim();
                 String correo = edtCorreo.getText().toString().trim();
+                String biografia = edtBio.getText().toString().trim();
                 String contraseña = edtContraseña.getText().toString().trim();
 
-                registrarUsuario(nombre, apodo, correo, contraseña);
+                registrarUsuario(nombre, apodo, correo, biografia, contraseña);
             }
         });
 
 
     }
 
-    private void registrarUsuario(final String nombre, final String apodo, String correo, String contraseña) {
+    private void registrarUsuario(final String nombre, final String apodo, String correo,String Bio, String contraseña) {
         mAuth.createUserWithEmailAndPassword(correo, contraseña)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -80,6 +83,7 @@ public class SignUpActivity extends AppCompatActivity {
                             usuarioRef.child("nombre").setValue(nombre);
                             usuarioRef.child("apodo").setValue(apodo);
                             usuarioRef.child("correo").setValue(correo);
+                            usuarioRef.child("biografia").setValue(Bio);
 
                             Toast.makeText(SignUpActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
                             finish();

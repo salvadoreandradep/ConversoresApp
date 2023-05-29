@@ -54,11 +54,11 @@ public class UserProfileActivity extends AppCompatActivity {
                     if (dataSnapshot.exists()) {
                         String nombre = dataSnapshot.child("nombre").getValue(String.class);
                         String apodo = dataSnapshot.child("apodo").getValue(String.class);
-                        String correo = dataSnapshot.child("correo").getValue(String.class);
+                        String biografia = dataSnapshot.child("biografia").getValue(String.class);
 
                         txtNombre.setText(nombre);
                         txtApodo.setText(apodo);
-                        txtCorreo.setText(correo);
+                        txtCorreo.setText(biografia);
                     }
                 }
 
