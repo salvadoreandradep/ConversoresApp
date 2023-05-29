@@ -34,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/txtprofile"
+        android:id="@+id/txtperfil"
         android:layout_width="122dp"
         android:layout_height="45dp"
         android:background="#E91E63"

@@ -79,6 +79,7 @@ public class SignUpActivity extends AppCompatActivity {
                             DatabaseReference usuarioRef = mDatabase.child("usuarios").child(usuarioId);
                             usuarioRef.child("nombre").setValue(nombre);
                             usuarioRef.child("apodo").setValue(apodo);
+                            usuarioRef.child("correo").setValue(correo);
 
                             Toast.makeText(SignUpActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
                             finish();

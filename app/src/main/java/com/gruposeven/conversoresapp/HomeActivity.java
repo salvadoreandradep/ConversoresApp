@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.gruposeven.conversoresapp.SQLite.MainActivity;
 
@@ -16,7 +14,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
     FirebaseAuth firebaseAuth;
-    TextView profile;
+    TextView profile, perfil;
 
 
    TextView buttonLogout;
@@ -40,7 +38,8 @@ public class HomeActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        profile= findViewById(R.id.txtprofile);
+        perfil=findViewById(R.id.txtperfil);
+        profile= findViewById(R.id.txtanadir);
         buttonLogout = findViewById(R.id.buttonLogout);
 
         buttonLogout.setOnClickListener(new android.view.View.OnClickListener() {
@@ -63,6 +62,14 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent profile = new Intent(HomeActivity.this, MainActivity.class);
                 startActivity(profile);
+            }
+        });
+
+        perfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent profil = new Intent(HomeActivity.this, UserProfileActivity.class);
+                startActivity(profil);
             }
         });
 
