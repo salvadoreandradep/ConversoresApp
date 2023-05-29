@@ -2,83 +2,70 @@ package com.gruposeven.conversoresapp;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.content.pm.PackageManager;
-import android.graphics.Color;
+import android.app.Service;
+import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
+import android.os.IBinder;
+import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
+import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-import java.util.concurrent.atomic.AtomicReference;
-
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
-
-
-    private static final String CHANNEL_ID = "channel_id";
-    private static final String CHANNEL_NAME = "channel_name";
+    private static final String TAG = "MyFirebaseMsgService";
 
     @Override
-    public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
-        super.onMessageReceived(remoteMessage);
-
-        // Obtener los datos de la notificación
-        if (remoteMessage.getData().size() > 0) {
-            // Obtener los datos de la notificación
-            String title = remoteMessage.getData().get("title");
-            String message = remoteMessage.getData().get("message");
+    public void onMessageReceived(RemoteMessage remoteMessage) {
+        if (remoteMessage.getNotification() != null) {
+            String title = remoteMessage.getNotification().getTitle();
+            String body = remoteMessage.getNotification().getBody();
 
             // Mostrar la notificación
-            showNotification(title, message);
+            showNotification(title, body);
         }
     }
 
-    private void showNotification(String title, String message) {
-        createNotificationChannel();
-
-        // Crear una notificación
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_notification)
-                .setContentTitle(title)
-                .setContentText(message)
-                .setColor(Color.BLUE)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setAutoCancel(true);
-
-        // Mostrar la notificación
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        notificationManager.notify(0, builder.build());
+    @Override
+    public void onNewToken(String token) {
+        // Actualizar el token de registro
+        Log.d(TAG, "Refreshed token: " + token);
     }
 
-    private void createNotificationChannel() {
+    private void showNotification(String title, String body) {
+        // Crear un ID único para la notificación
+        int notificationId = (int) System.currentTimeMillis();
+
+        // Crear el canal de notificación (solo necesario para Android Oreo y versiones posteriores)
+        String channelId = "default_channel_id";
+        String channelName = "Default Channel";
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(
-                    CHANNEL_ID,
-                    CHANNEL_NAME,
-                    NotificationManager.IMPORTANCE_DEFAULT
-            );
-            channel.setDescription("Channel description");
-
-            // Configurar otras opciones del canal (opcional)
-
+            NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
+
+        // Crear el sonido de la notificación
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+        // Construir la notificación
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, channelId)
+                .setContentTitle(title)
+                .setContentText(body)
+                .setSmallIcon(R.drawable.ic_notification)
+                .setAutoCancel(true)
+                .setSound(defaultSoundUri);
+
+        // Mostrar la notificación
+        NotificationManager notificationManager = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            notificationManager = getSystemService(NotificationManager.class);
+        }
+        notificationManager.notify(notificationId, notificationBuilder.build());
     }
 }

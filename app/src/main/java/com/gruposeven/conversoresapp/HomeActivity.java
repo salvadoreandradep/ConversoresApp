@@ -5,15 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.gruposeven.conversoresapp.SQLite.MainActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -53,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(android.view.View v) {
 
-                Intent Home = new Intent(HomeActivity.this, MainActivity.class);
+                Intent Home = new Intent(HomeActivity.this, LoginActivity.class);
                 startActivity(Home);
                 firebaseAuth.signOut();
                 finish();
@@ -67,7 +62,7 @@ public class HomeActivity extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent profile = new Intent(HomeActivity.this, UserProfileActivity.class);
+                Intent profile = new Intent(HomeActivity.this, MainActivity.class);
                 startActivity(profile);
             }
         });

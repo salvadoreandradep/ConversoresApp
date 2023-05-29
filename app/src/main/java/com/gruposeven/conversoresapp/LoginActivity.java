@@ -1,13 +1,14 @@
 package com.gruposeven.conversoresapp;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,17 +22,22 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import java.util.Date;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     EditText editTextEmail, editTextPassword;
     Button buttonLogin;
     TextView textViewSignUp, txtrecovery;
     FirebaseAuth firebaseAuth;
 
-    MyFirebaseMessagingService myFirebaseMessagingService;
-    String miToken= "";
+    private Handler handler;
+    private Runnable runnable;
+    private NotificationManager notificationManager;
+    private TextView textView;
+
+       String miToken= "";
 
 
 
@@ -48,13 +54,31 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        Button startButton = findViewById(R.id.startButton);
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startNotifications();
+            }
+        });
+
+        Button stopButton = findViewById(R.id.stopButton);
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopNotifications();
+            }
+        });
+
+
+
         firebaseAuth = FirebaseAuth.getInstance();
 
         // Verificar si el usuario ya ha iniciado sesión
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         if (currentUser != null) {
             // Si el usuario ya ha iniciado sesión, redirigir a la siguiente actividad
-            startActivity(new Intent(MainActivity.this, HomeActivity.class));
+            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             finish();
         }
 
@@ -80,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         txtrecovery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, recoverpassword.class));
+                startActivity(new Intent(LoginActivity.this, recoverpassword.class));
             }
         });
 
@@ -95,9 +119,14 @@ public class MainActivity extends AppCompatActivity {
         textViewSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SignUpActivity.class));
+                startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
             }
         });
+        handler = new Handler();
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        textView = findViewById(R.id.textView);
+
+        // Configurar botones
 
 
     }
@@ -113,10 +142,10 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if (task.isSuccessful()){
-                    startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                     finish();
                 } else {
-                    Toast.makeText(MainActivity.this, "Authentication failed.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Authentication failed.",Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -144,6 +173,41 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void startNotifications() {
+        // Configurar el Runnable para que se ejecute cada hora
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+
+                handler.postDelayed(this, 50); // 1 hora = 3600000 milisegundos
+                showNotification();
+            }
+        };
+
+        // Iniciar el Runnable
+        handler.post(runnable);
+    }
+
+    private void stopNotifications() {
+        // Detener el Runnable
+        if (handler != null && runnable != null) {
+            handler.removeCallbacks(runnable);
+        }
+    }
+
+    private void showNotification() {
+        // Crear la notificación
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "channel_id")
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentTitle("Notificación")
+                .setContentText("¡Esta es una notificación push!")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(true);
+
+        // Mostrar la notificación
+        int notificationId = (int) new Date().getTime(); // Generar un ID único para la notificación
+        notificationManager.notify(notificationId, builder.build());
+    }
 
 
 
