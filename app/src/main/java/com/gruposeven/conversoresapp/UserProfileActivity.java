@@ -25,8 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 public class UserProfileActivity extends AppCompatActivity implements SensorEventListener {
 
     private SensorManager sensorManager;
-    private Sensor proximitySensor;
-    private TextView proximityTextView;
+
     private TextView txtNombre;
     private TextView txtApodo;
     private TextView txtCorreo;
@@ -35,17 +34,15 @@ public class UserProfileActivity extends AppCompatActivity implements SensorEven
     private DatabaseReference mDatabase;
 
 
+    private Sensor gyroscopeSensor, proximitySensor, lightSensor;
+    private TextView gyroscopeTextView, proximityTextView, lightTextView;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-
-
-
-
-
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -80,22 +77,45 @@ public class UserProfileActivity extends AppCompatActivity implements SensorEven
             });
         }
 
-
-
+        gyroscopeTextView = findViewById(R.id.gyroscopeTextView);
         proximityTextView = findViewById(R.id.proximityTextView);
+        lightTextView = findViewById(R.id.lightTextView);
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+
+        // Sensor de giroscopio
+        gyroscopeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+
+        if (gyroscopeSensor == null) {
+            gyroscopeTextView.setText("Sensor de giroscopio no encontrado");
+        }
+
+        // Sensor de proximidad
         proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
 
         if (proximitySensor == null) {
             proximityTextView.setText("Sensor de proximidad no encontrado");
         }
 
+        // Sensor de luz
+        lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+
+        if (lightSensor == null) {
+            lightTextView.setText("Sensor de luz no encontrado");
+        }
+
+
+
+
+
+
     }
 
     protected void onResume() {
         super.onResume();
+        sensorManager.registerListener(this, gyroscopeSensor, SensorManager.SENSOR_DELAY_NORMAL);
         sensorManager.registerListener(this, proximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override
@@ -106,18 +126,30 @@ public class UserProfileActivity extends AppCompatActivity implements SensorEven
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        float distance = event.values[0];
-        if (distance < proximitySensor.getMaximumRange()) {
-            proximityTextView.setText("Objeto cercano");
-        } else {
-            proximityTextView.setText("Objeto lejano");
+        Sensor sensor = event.sensor;
+        float[] values = event.values;
+
+        if (sensor.getType() == Sensor.TYPE_GYROSCOPE) {
+            float x = values[0];
+            float y = values[1];
+            float z = values[2];
+            gyroscopeTextView.setText("Giroscopio:\nX: " + x + "\nY: " + y + "\nZ: " + z);
+        } else if (sensor.getType() == Sensor.TYPE_PROXIMITY) {
+            float proximityValue = values[0];
+            proximityTextView.setText("Proximidad: " + proximityValue);
+        } else if (sensor.getType() == Sensor.TYPE_LIGHT) {
+            float lightValue = values[0];
+            lightTextView.setText("Luz: " + lightValue);
         }
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        // No se utiliza en este ejemplo
+
     }
+
+
+
 
 
 }
