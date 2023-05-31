@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,8 +22,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class UserProfileActivity extends AppCompatActivity {
+public class UserProfileActivity extends AppCompatActivity implements SensorEventListener {
 
+    private SensorManager sensorManager;
+    private Sensor proximitySensor;
+    private TextView proximityTextView;
     private TextView txtNombre;
     private TextView txtApodo;
     private TextView txtCorreo;
@@ -34,6 +41,10 @@ public class UserProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+
+
+
+
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -69,6 +80,43 @@ public class UserProfileActivity extends AppCompatActivity {
             });
         }
 
+
+
+        proximityTextView = findViewById(R.id.proximityTextView);
+
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+
+        if (proximitySensor == null) {
+            proximityTextView.setText("Sensor de proximidad no encontrado");
+        }
+
+    }
+
+    protected void onResume() {
+        super.onResume();
+        sensorManager.registerListener(this, proximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        float distance = event.values[0];
+        if (distance < proximitySensor.getMaximumRange()) {
+            proximityTextView.setText("Objeto cercano");
+        } else {
+            proximityTextView.setText("Objeto lejano");
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        // No se utiliza en este ejemplo
     }
 
 

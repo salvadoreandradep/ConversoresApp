@@ -3,5 +3,8 @@
 
     <string name="default_notification_channel_id">my_default_channel</string>
 
+    <string name="invalid_mail">Ingrese un correo electronico valido</string>
+    <string name="invalid_pass">Ingrese una contraseña mayor a 6 digitos</string>
+
 
 </resources>
