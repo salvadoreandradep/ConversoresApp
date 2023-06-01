@@ -14,7 +14,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
     FirebaseAuth firebaseAuth;
-    TextView profile, perfil;
+    TextView profile, perfil, chat;
 
 
    TextView buttonLogout;
@@ -38,9 +38,19 @@ public class HomeActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
+
+        chat=findViewById(R.id.txtchat);
         perfil=findViewById(R.id.txtperfil);
         profile= findViewById(R.id.txtanadir);
         buttonLogout = findViewById(R.id.buttonLogout);
+
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Home = new Intent(HomeActivity.this, lista_usuarios.class);
+                startActivity(Home);
+            }
+        });
 
         buttonLogout.setOnClickListener(new android.view.View.OnClickListener() {
             @Override

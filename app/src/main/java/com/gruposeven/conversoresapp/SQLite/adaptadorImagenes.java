@@ -42,7 +42,7 @@ public class adaptadorImagenes extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         layoutInflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        View itemView = layoutInflater.inflate(R.layout.listview_imagenes, parent, false);
+        View itemView = layoutInflater.inflate(R.layout.listview_imagenessql, parent, false);
         TextView tempVal = itemView.findViewById(R.id.lblTitulo);
         ImageView imgViewView = itemView.findViewById(R.id.imgPhoto);
         try{

@@ -36,6 +36,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     AwesomeValidation awesomeValidation;
 
+    String miToken;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,13 +90,16 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+
+                            String mitoken = task.getResult().toString();
                             String usuarioId = mAuth.getCurrentUser().getUid();
 
-                            DatabaseReference usuarioRef = mDatabase.child("usuarios").child(usuarioId);
+                            DatabaseReference usuarioRef = mDatabase.child("usuarios_regsitrados").child(usuarioId);
                             usuarioRef.child("nombre").setValue(nombre);
                             usuarioRef.child("apodo").setValue(apodo);
                             usuarioRef.child("correo").setValue(correo);
                             usuarioRef.child("biografia").setValue(Bio);
+                            usuarioRef.child("token").setValue(mitoken);
 
                             Toast.makeText(SignUpActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
                             finish();

@@ -177,8 +177,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
 
-            String miToken = task.getResult();
-            Toast.makeText(getApplicationContext(), "Token"+ miToken, Toast.LENGTH_LONG).show();
+
             String errorcode = ((FirebaseAuthException)task.getException()).getErrorCode();
             dameToastdeerror(errorcode);
         });
