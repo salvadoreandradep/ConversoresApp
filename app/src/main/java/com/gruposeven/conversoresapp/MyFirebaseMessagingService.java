@@ -9,6 +9,8 @@ import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -32,28 +34,35 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         sendNewMsgBroadcast(remoteMessage);
     }
     private void crearNotificacionPush(RemoteMessage remoteMessage){
-        Intent intent = new Intent( this, chats.class );
-        intent.setFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("msg", remoteMessage.getData().get("msg"));
-        intent.putExtra("to", remoteMessage.getData().get("para"));
-        intent.putExtra("from", remoteMessage.getData().get("de"));
-        intent.putExtra("user", remoteMessage.getData().get("user"));
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            setupChannels();
+
+        try {
+            Intent intent = new Intent( this, chats.class );
+            intent.setFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("msg", remoteMessage.getData().get("msg"));
+            intent.putExtra("from", remoteMessage.getData().get("de"));
+            intent.putExtra("usuario", remoteMessage.getData().get("usuario"));
+
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                setupChannels();
+            }
+            Uri notificationSoundURI = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            NotificationCompat.Builder mNotificationBuilder = new NotificationCompat.Builder( this, ADMIN_CHANNEL_ID)                .
+                    setSmallIcon(R.mipmap.ic_launcher)
+                    .setContentTitle("Has recibido un mensaje de "+ remoteMessage.getData().get("user"))
+                    .setContentText(remoteMessage.getData().get("msg"))
+                    .setAutoCancel( true )
+                    .setSound(notificationSoundURI)
+                    .setContentIntent(pendingIntent)
+                    .setPriority(NotificationCompat.PRIORITY_HIGH);
+            NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.notify(0, mNotificationBuilder.build());
+        }catch (Exception e){
+
+
         }
-        Uri notificationSoundURI = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder mNotificationBuilder = new NotificationCompat.Builder( this, ADMIN_CHANNEL_ID)                .
-                setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("Has recibido un mensaje de "+ remoteMessage.getData().get("user"))
-                .setContentText(remoteMessage.getData().get("msg"))
-                .setAutoCancel( true )
-                .setSound(notificationSoundURI)
-                .setContentIntent(pendingIntent)
-                .setPriority(NotificationCompat.PRIORITY_HIGH);
-        NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0, mNotificationBuilder.build());
+
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void setupChannels(){
@@ -77,4 +86,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         intent.putExtra("user", remoteMessage.getData().get("user"));
         LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
     }
+
+
 }
