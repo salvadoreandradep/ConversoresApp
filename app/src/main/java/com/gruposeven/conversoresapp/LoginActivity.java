@@ -147,23 +147,36 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginUser() {
 
+        try {
+            String email = editTextEmail.getText().toString().trim();
+            String password = editTextPassword.getText().toString().trim();
 
-        String email = editTextEmail.getText().toString().trim();
-        String password = editTextPassword.getText().toString().trim();
+            firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
 
-        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
 
-                if (task.isSuccessful()){
-                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                    finish();
-                } else {
-                    Toast.makeText(LoginActivity.this, "Authentication failed.",Toast.LENGTH_SHORT).show();
+                    if (task.isSuccessful()){
+                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                        finish();
+                    } else {
+                        String errorcode = ((FirebaseAuthException)task.getException()).getErrorCode();
+                        dameToastdeerror(errorcode);
+                        Toast.makeText(LoginActivity.this, "Authentication failed.",Toast.LENGTH_SHORT).show();
+                    }
+
+
+
+
                 }
+            });
 
-            }
-        });
+        } catch (Exception e){
+
+            Toast.makeText(LoginActivity.this, "Rellena los campos.",Toast.LENGTH_SHORT).show();
+
+        }
+
 
 
     }
@@ -176,10 +189,6 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-
-
-            String errorcode = ((FirebaseAuthException)task.getException()).getErrorCode();
-            dameToastdeerror(errorcode);
         });
 
 
