@@ -85,31 +85,38 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void registrarUsuario(final String nombre, final String apodo, String correo,String Bio, String contraseña) {
-        mAuth.createUserWithEmailAndPassword(correo, contraseña)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
 
-                            String mitoken = task.getResult().toString();
-                            String usuarioId = mAuth.getCurrentUser().getUid();
+        try {
+            mAuth.createUserWithEmailAndPassword(correo, contraseña)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
 
-                            DatabaseReference usuarioRef = mDatabase.child("usuarios_regsitrados").child(usuarioId);
-                            usuarioRef.child("nombre").setValue(nombre);
-                            usuarioRef.child("apodo").setValue(apodo);
-                            usuarioRef.child("correo").setValue(correo);
-                            usuarioRef.child("biografia").setValue(Bio);
-                            usuarioRef.child("token").setValue(mitoken);
+                                String mitoken = task.getResult().toString();
+                                String usuarioId = mAuth.getCurrentUser().getUid();
 
-                            Toast.makeText(SignUpActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-                            finish();
-                        } else {
-                            Toast.makeText(SignUpActivity.this, "Error en el registro: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            String errorcode = ((FirebaseAuthException)task.getException()).getErrorCode();
-                            dameToastdeerror(errorcode);
+                                DatabaseReference usuarioRef = mDatabase.child("usuarios_regsitrados").child(usuarioId);
+                                usuarioRef.child("nombre").setValue(nombre);
+                                usuarioRef.child("apodo").setValue(apodo);
+                                usuarioRef.child("correo").setValue(correo);
+                                usuarioRef.child("biografia").setValue(Bio);
+                                usuarioRef.child("token").setValue(mitoken);
+
+                                Toast.makeText(SignUpActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+                                finish();
+                            } else {
+                                Toast.makeText(SignUpActivity.this, "Error en el registro: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                String errorcode = ((FirebaseAuthException)task.getException()).getErrorCode();
+                                dameToastdeerror(errorcode);
+                            }
                         }
-                    }
-                });
+                    });
+
+        }catch (Exception e ){
+            Toast.makeText(SignUpActivity.this, "Rellena los campos", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private void dameToastdeerror(String error) {
