@@ -54,7 +54,7 @@ public class UserProfileActivity extends AppCompatActivity implements SensorEven
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             String usuarioId = currentUser.getUid();
-            DatabaseReference usuarioRef = mDatabase.child("usuarios").child(usuarioId);
+            DatabaseReference usuarioRef = mDatabase.child("usuarios_regsitrados").child(usuarioId);
 
             usuarioRef.addValueEventListener(new ValueEventListener() {
                 @Override
