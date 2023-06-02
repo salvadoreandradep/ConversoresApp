@@ -77,6 +77,7 @@ public class chats extends Activity {
                 urlPhotoFirestore = parametros.getString("urlPhotoFirestore");
                 tempVal.setText(user);
             }
+
             txtMsg = findViewById(R.id.txtMsg);
             txtMsg.setOnKeyListener((v, keyCode, event) -> {
                 if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
@@ -89,6 +90,10 @@ public class chats extends Activity {
                 }
                 return false;
             });
+
+
+
+
             btnEnviar = findViewById(R.id.btnEnviar);
             btnEnviar.setOnClickListener(v -> {
                 try {
