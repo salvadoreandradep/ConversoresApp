@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         if (currentUser != null) {
             // Si el usuario ya ha iniciado sesión, redirigir a la siguiente actividad
-            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+            startActivity(new Intent(LoginActivity.this, UserProfileActivity.class));
             finish();
         }
 
@@ -102,18 +102,18 @@ public class LoginActivity extends AppCompatActivity {
         textViewSignUp = findViewById(R.id.textViewSignUp);
         txtrecovery=findViewById(R.id.txtrecovery);
 
-        FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(task -> {
-                    if (!task.isSuccessful()) {
-                      return;
-                    }
+        //FirebaseMessaging.getInstance().getToken()
+                //.addOnCompleteListener(task -> {
+                   // if (!task.isSuccessful()) {
+                     // return;
+                   // }
 
                     // Obtén el token de registro del dispositivo
-                    String mitoken = task.getResult();
-                    Toast.makeText(getApplicationContext(),"mi token" +  mitoken, Toast.LENGTH_LONG).show();
+                   // String mitoken = task.getResult();
+                   // Toast.makeText(getApplicationContext(),"mi token" +  mitoken, Toast.LENGTH_LONG).show();
 
                     // Puedes guardar el token en tu servidor para enviar notificaciones push más adelante
-                });
+               // });
 
         txtrecovery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,7 +157,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                     if (task.isSuccessful()){
-                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                        startActivity(new Intent(LoginActivity.this, UserProfileActivity.class));
                         finish();
                     } else {
                         String errorcode = ((FirebaseAuthException)task.getException()).getErrorCode();
