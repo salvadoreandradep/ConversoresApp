@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.gruposeven.conversoresapp.R;
 
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class adaptadorImagenes extends BaseAdapter {
         try{
             user = datos.get(position);
             tempVal.setText(user.getUserName());
-            //Glide.with(context).load(user.getUrlPhotoFirestore()).into(imgView);
+            Glide.with(context).load(user.getUrlPhotoFirestore()).into(imgView);
         }catch (Exception e){
             tempVal.setText(e.getMessage());
         }

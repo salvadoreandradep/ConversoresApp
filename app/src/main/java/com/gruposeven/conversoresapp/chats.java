@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -251,7 +252,7 @@ public class chats extends Activity {
     };
     void mostrarFoto(){
         imgTemp = findViewById(R.id.imgPhotoChat);
-        //Glide.with(getApplicationContext()).load(urlPhotoFirestore).into(imgTemp);
+        Glide.with(getApplicationContext()).load(urlPhotoFirestore).into(imgTemp);
     }
     private void mostrarMsgToast(String msg){
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
