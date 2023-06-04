@@ -18,7 +18,7 @@
     </ListView>
 
     <TextView
-        android:id="@+id/txthome"
+        android:id="@+id/txtanadir"
         android:layout_width="99dp"
         android:layout_height="45dp"
         android:background="#E91E63"
@@ -35,7 +35,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/txtanadir"
+        android:id="@+id/txt"
         android:layout_width="101dp"
         android:layout_height="50dp"
         android:layout_marginStart="192dp"
@@ -59,7 +59,7 @@
         android:layout_marginBottom="8dp"
         android:src="@drawable/_37_2373015_logo_home_png_home_symbol_png_white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txthome" />
+        app:layout_constraintStart_toEndOf="@+id/txtanadir" />
 
     <ImageView
         android:id="@+id/imageView8"

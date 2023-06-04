@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/txthome"
+        android:id="@+id/txtanadir"
         android:layout_width="99dp"
         android:layout_height="45dp"
         android:background="#E91E63"
@@ -17,17 +17,17 @@
 
     <TextView
         android:id="@+id/txtchat"
-        android:layout_width="99dp"
-        android:layout_height="45dp"
+        android:layout_width="98dp"
+        android:layout_height="50dp"
         android:layout_marginStart="96dp"
         android:background="#E91E63"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/txtanadir"
-        android:layout_width="99dp"
-        android:layout_height="45dp"
+        android:id="@+id/txt"
+        android:layout_width="101dp"
+        android:layout_height="50dp"
         android:layout_marginStart="192dp"
         android:background="#E91E63"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,23 +42,24 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginBottom="4dp"
+        android:id="@+id/imageView8"
+        android:layout_width="47dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="-5dp"
+        android:src="@drawable/las"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/_37_2373015_logo_home_png_home_symbol_png_white" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="37dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="30dp"
+        android:id="@+id/imageView9"
+        android:layout_width="84dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/users"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txthome"
-        app:srcCompat="@drawable/icon" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <TextView
         android:id="@+id/buttonLogout"
@@ -84,14 +85,16 @@
         app:layout_constraintVertical_bias="0.642" />
 
     <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="62dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginBottom="4dp"
+        android:id="@+id/imageView3"
+        android:layout_width="53dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="-7dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtchat"
-        app:srcCompat="@drawable/las" />
+        app:layout_constraintEnd_toStartOf="@+id/txtperfil"
+        app:layout_constraintStart_toEndOf="@+id/txtanadir"
+        app:srcCompat="@drawable/icon" />
+
+    ¿
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
