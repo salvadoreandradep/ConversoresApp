@@ -220,7 +220,7 @@ public class AgregarProducto extends AppCompatActivity {
             }
             if( photoAmigo!=null ){
                 try{
-                    Uri uriPhotoAmigo = FileProvider.getUriForFile(AgregarProducto.this, "com.example.semana13_sqlite.fileprovider", photoAmigo);
+                    Uri uriPhotoAmigo = FileProvider.getUriForFile(AgregarProducto.this, "com.gruposeven.conversoresapp.fileprovider", photoAmigo);
                     tomarFotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriPhotoAmigo);
                     startActivityForResult(tomarFotoIntent,1);
                 }catch (Exception e){

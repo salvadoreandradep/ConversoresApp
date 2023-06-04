@@ -47,7 +47,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="60dp"
         android:layout_marginBottom="50dp"
-        android:background="@drawable/simple_gray_background_4k_br_1080x1920"
+        android:background="@drawable/photo_1586809764311_090bc6068916"
         android:divider="@null"
         android:stackFromBottom="true" />
 

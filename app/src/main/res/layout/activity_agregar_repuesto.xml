@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
+    android:background="@drawable/photo_1586809764311_090bc6068916"
     tools:context=".SQLite.AgregarProducto">
 
     <LinearLayout
@@ -38,8 +39,7 @@
                         android:layout_height="match_parent"
                         android:background="@color/white"
                         android:rotation="-90"
-                        android:scaleType="centerCrop"
-                        />
+                        android:scaleType="centerCrop" />
 
 
                 </androidx.cardview.widget.CardView>
@@ -66,6 +66,7 @@
                 android:layout_marginBottom="10dp"
                 android:hint="Nombre"
                 android:textColor="#000000"
+                android:textColorHint="#474646"
                 android:textSize="16sp" />
 
             <EditText
@@ -80,6 +81,7 @@
                 android:layout_marginBottom="10dp"
                 android:hint="Presentacion"
                 android:textColor="#000000"
+                android:textColorHint="#474646"
                 android:textSize="16sp" />
 
             <EditText
@@ -94,6 +96,7 @@
                 android:layout_marginBottom="10dp"
                 android:hint="Precio"
                 android:textColor="#000000"
+                android:textColorHint="#474646"
                 android:textSize="16sp" />
 
             <EditText
@@ -108,6 +111,7 @@
                 android:layout_marginBottom="10dp"
                 android:hint="Marca"
                 android:textColor="#000000"
+                android:textColorHint="#474646"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -126,7 +130,7 @@
                     android:id="@+id/btnSaveRep"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#000000"
+                    android:backgroundTint="#E91E63"
                     android:text="Guardar"
                     android:textColor="#FFFFFF"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -153,7 +157,7 @@
                     android:layout_marginBottom="20dp"
                     android:src="@drawable/abc_vector_test"
 
-                    app:backgroundTint="#FDFDFD"
+                    app:backgroundTint="@color/material_dynamic_neutral99"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
