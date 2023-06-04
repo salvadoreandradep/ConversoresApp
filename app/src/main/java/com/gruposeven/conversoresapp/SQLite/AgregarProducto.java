@@ -206,7 +206,7 @@ public class AgregarProducto extends AppCompatActivity {
         }
     }
     private void mostrarVistaPrincipal(){
-        Intent iprincipal = new Intent(getApplicationContext(), LoginActivity.class);
+        Intent iprincipal = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(iprincipal);
     }
     private void tomarFotoAmigo(){
