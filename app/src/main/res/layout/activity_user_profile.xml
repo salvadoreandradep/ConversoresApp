@@ -12,56 +12,73 @@
         android:id="@+id/txtNombre"
         android:layout_width="194dp"
         android:layout_height="21dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="50dp"
         android:text="Nombre del usuario"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.859"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtApodo"
-        android:layout_width="201dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="186dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="5dp"
         android:text="Apodo de usuario"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.88"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.388"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
 
     <TextView
         android:id="@+id/txtCorreo"
         android:layout_width="376dp"
         android:layout_height="124dp"
-        android:text="Correo electrónico"
+        android:layout_marginTop="90dp"
+        android:text="Biografia"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="134dp" />
+        app:layout_constraintTop_toBottomOf="@+id/txtApodo" />
 
     <TextView
         android:id="@+id/gyroscopeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="414dp"
+        android:layout_marginEnd="34dp"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="323dp"
-        tools:layout_editor_absoluteY="398dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/proximityTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="409dp"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="186dp"
-        tools:layout_editor_absoluteY="393dp" />
+        app:layout_constraintEnd_toStartOf="@+id/gyroscopeTextView"
+        app:layout_constraintStart_toEndOf="@+id/lightTextView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/lightTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="407dp"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="391dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="113dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/users" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
