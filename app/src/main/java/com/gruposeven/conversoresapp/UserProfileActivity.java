@@ -10,6 +10,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.gruposeven.conversoresapp.SQLite.MainActivity;
 
 public class UserProfileActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -28,7 +30,8 @@ public class UserProfileActivity extends AppCompatActivity implements SensorEven
 
     private TextView txtNombre;
     private TextView txtApodo;
-    private TextView txtCorreo;
+    private TextView txtCorreo, btnchats, btnhomme, btnañadir;
+
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
@@ -47,6 +50,10 @@ public class UserProfileActivity extends AppCompatActivity implements SensorEven
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+
+        btnañadir= findViewById(R.id.txtañadir);
+        btnchats=findViewById(R.id.txtchats);
+        btnhomme=findViewById(R.id.txthomme);
         txtNombre = findViewById(R.id.txtNombre);
         txtApodo = findViewById(R.id.txtApodo);
         txtCorreo = findViewById(R.id.txtCorreo);
@@ -70,11 +77,46 @@ public class UserProfileActivity extends AppCompatActivity implements SensorEven
                     }
                 }
 
+
+
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                     // Manejar el error de lectura de la base de datos
                 }
             });
+            btnhomme.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent h = new Intent(UserProfileActivity.this, HomeActivity.class);
+                    startActivity(h);
+
+                }
+            });
+
+            btnchats.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent c = new Intent(UserProfileActivity.this, ChatActivity.class);
+                    startActivity(c);
+
+                }
+            });
+
+
+            btnañadir.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent a = new Intent(UserProfileActivity.this, MainActivity.class);
+                    startActivity(a);
+
+                }
+            });
+
+
+
+
+
         }
 
         gyroscopeTextView = findViewById(R.id.gyroscopeTextView);
