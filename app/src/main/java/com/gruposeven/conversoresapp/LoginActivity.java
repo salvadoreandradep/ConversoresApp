@@ -205,6 +205,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
+
         // Iniciar el Runnable
         handler.post(runnable);
     }
