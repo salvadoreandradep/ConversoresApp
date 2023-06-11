@@ -22,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.gruposeven.conversoresapp.HomeActivity;
 import com.gruposeven.conversoresapp.R;
 
 import org.json.JSONArray;
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     InputStreamReader isReader;
-    FloatingActionButton btnFloat;
+    FloatingActionButton btnFloat, BTNHOME;
     DB miBD;
     ListView ltsProducto;
     Cursor datosProductosCursor = null;
@@ -63,6 +64,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        BTNHOME= findViewById(R.id.floutmenu);
+        BTNHOME.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent home = new Intent(MainActivity.this, HomeActivity.class);
+                startActivity(home);
+            }
+        });
 
 
         obtenerDatos myAsync = new obtenerDatos();
