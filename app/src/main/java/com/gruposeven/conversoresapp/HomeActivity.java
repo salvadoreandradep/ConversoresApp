@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.gruposeven.conversoresapp.SQLite.MainActivity;
@@ -44,7 +43,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
         chat=findViewById(R.id.txtchat);
-        perfil=findViewById(R.id.txtperfil);
+        perfil=findViewById(R.id.txtperfil1);
         profile= findViewById(R.id.txtanadir);
         buttonLogout = findViewById(R.id.buttonLogout);
 
