@@ -50,7 +50,7 @@ public class recoverpassword extends AppCompatActivity {
         txtlogins.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent logins = new Intent(recoverpassword.this, UserProfileActivity.class);
+                Intent logins = new Intent(recoverpassword.this, LoginActivity.class);
                 startActivity(logins);
             }
         });
