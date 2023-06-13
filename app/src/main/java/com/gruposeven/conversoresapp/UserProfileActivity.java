@@ -97,7 +97,7 @@ public class UserProfileActivity extends AppCompatActivity implements SensorEven
             btnchats.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent c = new Intent(UserProfileActivity.this, ChatActivity.class);
+                    Intent c = new Intent(UserProfileActivity.this, lista_usuarios.class);
                     startActivity(c);
 
                 }
