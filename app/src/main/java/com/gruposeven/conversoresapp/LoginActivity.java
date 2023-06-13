@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         if (currentUser != null) {
             // Si el usuario ya ha iniciado sesión, redirigir a la siguiente actividad
-            startActivity(new Intent(LoginActivity.this, UserProfileActivity.class));
+            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             finish();
         }
 

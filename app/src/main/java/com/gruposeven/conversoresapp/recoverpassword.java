@@ -3,11 +3,13 @@ package com.gruposeven.conversoresapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class recoverpassword extends AppCompatActivity {
 
     private EditText editTextEmail;
+    TextView txtlogins;
     private Button buttonRecuperarContraseña;
     private FirebaseAuth firebaseAuth;
 
@@ -39,6 +42,23 @@ public class recoverpassword extends AppCompatActivity {
                 recuperarContraseña();
             }
         });
+
+
+
+
+        txtlogins=findViewById(R.id.txtloginsd);
+        txtlogins.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent logins = new Intent(recoverpassword.this, UserProfileActivity.class);
+                startActivity(logins);
+            }
+        });
+
+
+
+
+
     }
 
     private void recuperarContraseña() {
