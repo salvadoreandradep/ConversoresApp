@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import androidx.core.content.FileProvider;
 
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -35,6 +37,7 @@ public class ChatActivity extends Activity {
     String urlCompleteImgFirestore;
     TextView tempVal;
     Button btnGuardar;
+    FloatingActionButton btnf;
     DatabaseReference databaseReference;
     String miToken;
 
@@ -53,6 +56,23 @@ public class ChatActivity extends Activity {
         btnGuardar.setOnClickListener(v -> {
             uploadPhotoFirestore();
         });
+
+
+
+
+
+
+
+
+        btnf=findViewById(R.id.flouthomes);
+        btnf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent homers = new Intent(ChatActivity.this, HomeActivity.class);
+                startActivity(homers);
+            }
+        });
+
     }
     void uploadPhotoFirestore(){
         mostrarMsgToast("Subiendo la foto te confirmaremos cuando este listo");
