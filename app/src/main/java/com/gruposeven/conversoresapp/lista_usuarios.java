@@ -3,7 +3,9 @@ package com.gruposeven.conversoresapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,10 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.gruposeven.conversoresapp.ChatActivity;
-import com.gruposeven.conversoresapp.R;
-import com.gruposeven.conversoresapp.adaptadorImagenes;
-import com.gruposeven.conversoresapp.chats;
+import com.gruposeven.conversoresapp.SQLite.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,6 +26,8 @@ import java.util.ArrayList;
 public class lista_usuarios extends Activity {
     ListView ltsUsuarios;
     DatabaseReference databaseReference;
+
+    TextView btnperfil, btnhome, btnlist;
     JSONArray datosJSONArray = new JSONArray();
     JSONObject datosJSONObject;
     String miToken;
@@ -38,7 +39,43 @@ public class lista_usuarios extends Activity {
         ltsUsuarios = findViewById(R.id.ltsUsuarios);
         mostrarListadoUsuarios();
         mostrarChats();
+
+
+        btnhome=findViewById(R.id.txthomes);
+        btnlist=findViewById(R.id.txtlistas);
+        btnperfil=findViewById(R.id.txtperfiles);
+
+
+        btnperfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent perfil = new Intent(lista_usuarios.this, UserProfileActivity.class);
+                startActivity(perfil);
+            }
+        });
+
+
+        btnhome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent home = new Intent(lista_usuarios.this, HomeActivity.class);
+                startActivity(home);
+            }
+        });
+
+        btnlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent list = new Intent(lista_usuarios.this, MainActivity.class);
+                startActivity(list);
+            }
+        });
+
+
+
     }
+
+
     void mostrarListadoUsuarios(){
         databaseReference = FirebaseDatabase.getInstance().getReference("usuarios");
 
