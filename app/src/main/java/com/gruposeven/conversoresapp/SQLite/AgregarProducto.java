@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.gruposeven.conversoresapp.HomeActivity;
 import com.gruposeven.conversoresapp.LoginActivity;
 import com.gruposeven.conversoresapp.R;
 
@@ -45,7 +46,7 @@ public class AgregarProducto extends AppCompatActivity {
     String rev = "";
     JSONObject datosJSON;
     String resp;
-    FloatingActionButton btnAtras;
+    FloatingActionButton btnAtras, btnreturs;
     ImageView imgFotoAmigo;
     Intent tomarFotoIntent;
     String urlCompletaImg, idProducto, accion="nuevo";
@@ -62,7 +63,14 @@ public class AgregarProducto extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
+                btnreturs=findViewById(R.id.floutreturns);
+                btnreturs.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent retrn = new Intent(AgregarProducto.this, HomeActivity.class);
+                        startActivity(retrn);
+                    }
+                });
                 TextView temp = (TextView) findViewById(R.id.txtNombre);
                 String nombre2 = temp.getText().toString();
 
